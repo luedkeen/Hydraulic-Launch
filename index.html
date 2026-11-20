@@ -155,7 +155,7 @@ svg text{font-family:"IBM Plex Mono",monospace}
   <p class="kicker">Transport 1 · ChemE Fluid Mechanics · Individual Submission — Ethan</p>
   <h1>Sizing a pneumatic launch, from compressor to catch car</h1>
   <p class="lede">How do you size the compressor, receiver tank, piston, and supply line for a compressed-air roller-coaster launch so a train reaches its target speed in the required time — without losing too much pressure to friction along the way? This site is the project: an interactive sizing demo, the full calculation, and the documentation of how it was built with AI.</p>
-  <div class="plain"><span class="plabel">In plain English</span><p>Some roller coasters don't roll down a big hill to get going. Instead, a machine yanks the train forward — really fast — like a slingshot. On the S&amp;S compressed-air coasters (Maxx Force, Dodonpa), the slingshot is a giant blast of squeezed air. This project answers a simple question: <strong>how big does that air machine need to be?</strong> How hard a push, how much air per launch, how big a storage tank, and how wide a pipe — so the train hits 78 mph in under 3 seconds without wasting pressure along the way. Every technical explanation on this page has a plain-English version right next to it, like this one. The math stays — your professor still needs it — but you don't need an engineering degree to follow the story.</p></div>
+  <div class="plain"><span class="plabel">In plain English</span><p>Some roller coasters don't roll down a big hill to get going. Instead, a machine yanks the train forward — really fast — like a slingshot. On Maxx Force, the S&amp;S compressed-air coaster at Six Flags Great America, the slingshot is a giant blast of squeezed air. This project answers a simple question: <strong>how big does that air machine need to be?</strong> How hard a push, how much air per launch, how big a storage tank, and how wide a pipe — so the train hits 78 mph in under 3 seconds without wasting pressure along the way. Every technical explanation on this page has a plain-English version right next to it, like this one. The math stays — your professor still needs it — but you don't need an engineering degree to follow the story.</p></div>
   <div class="statrow">
     <div class="stat"><b>0 → 35 m/s</b><span>Design target · 78 mph</span></div>
     <div class="stat"><b>2.8 s</b><span>Launch time · 49 m of track</span></div>
@@ -176,7 +176,7 @@ svg text{font-family:"IBM Plex Mono",monospace}
     <a href="#validation">4 · Validation</a>
     <a href="#process">5 · AI process</a>
     <a href="#compare">6 · Model comparison</a>
-    <a href="#video">7 · Video &amp; transcript</a>
+    <a href="#presentation">7 · Presentation</a>
     <a href="#learned">8 · What I learned</a>
     <a href="#attribution">9 · Attribution &amp; references</a>
   </div>
@@ -281,7 +281,7 @@ svg text{font-family:"IBM Plex Mono",monospace}
 <section id="system">
   <p class="kicker">Section 2 · The system</p>
   <h2>Store slowly, spend fast</h2>
-  <p>A pneumatic launch (S&amp;S's compressed-air design, used on Maxx Force and Dodonpa) separates <em>making</em> power from <em>delivering</em> it. A modest compressor spends ~90 seconds charging a receiver tank; the launch then spends that stored air in under 3 seconds. That is why the peak mechanical power (3.46 MW) can be ~11× the compressor power (305 kW) — the central Transport 1 idea of this project. For contrast, Kingda Ka's Intamin launch did the same store-slowly-spend-fast trick with pressurized oil and hydraulic motors; the S&amp;S design sized here does it with compressed air and a piston.</p>
+  <p>A pneumatic launch (S&amp;S's compressed-air design, used on Maxx Force) separates <em>making</em> power from <em>delivering</em> it. A modest compressor spends ~90 seconds charging a receiver tank; the launch then spends that stored air in under 3 seconds. That is why the peak mechanical power (3.46 MW) can be ~11× the compressor power (305 kW) — the central Transport 1 idea of this project. For contrast, Kingda Ka's Intamin launch did the same store-slowly-spend-fast trick with pressurized oil and hydraulic motors; the S&amp;S design sized here does it with compressed air and a piston.</p>
   <div class="plain"><span class="plabel">In plain English</span><p>Here's the trick, and it's the whole idea of the project: <strong>save up slowly, spend it all at once.</strong> A normal compressor isn't strong enough to launch a coaster by itself — that would take a gigantic, expensive machine. So instead, it spends about 90 seconds slowly squeezing air into a storage tank, like inflating a balloon a little at a time. Then — whoosh — the tank releases everything in under 3 seconds. That burst is about 11 times stronger than the compressor alone. It's the same reason you charge your phone for an hour and then it can flash its camera light in a split second: storing energy lets you spend it faster than you made it. Read the 7 boxes below left to right — that's the journey the air takes, from quiet tank to flying train.</p></div>
   <div class="flow" aria-label="System flow diagram">
     <div class="step"><b>1 · Compressor</b><span>One 500 hp-class unit squeezes air toward the receiver over ~90 s</span></div>
@@ -293,366 +293,349 @@ svg text{font-family:"IBM Plex Mono",monospace}
     <div class="step"><b>7 · Train</b><span>Catch car engages the train and accelerates it to target speed</span></div>
   </div>
   <div class="plain"><span class="plabel">In plain English — the 7 steps, simply</span><p><strong>1.</strong> A compressor slowly squeezes air. <strong>2.</strong> A big tank stores it under high pressure, like a coiled spring. <strong>3.</strong> Valves snap open. <strong>4.</strong> The air races through a fat pipe. <strong>5.</strong> It shoves a piston inside a cylinder, hard. <strong>6.</strong> The piston drags a small cart down the track. <strong>7.</strong> The cart is hooked to the train — and off you go.</p></div>
-  <p class="small">Reference cases: Maxx Force (Six Flags Great America, opened 2019) launches 0 → 78 mph (126 km/h, 35 m/s) in 1.8 s, about 1.98 g; Dodonpa (Fuji-Q Highland, S&amp;S Thrust Air 2000) launches 0 → 107 mph (172 km/h, 47.8 m/s) in 1.8 s, about 2.71 g. S&amp;S does not publish piston sizes, tank volumes, or line diameters, so this project sizes its own self-consistent design case (Section 3) — deliberately gentler than both, at 1.27 g — and uses the two real rides only as an order-of-magnitude validation (Section 4). In plain English: the company never published its pipe or tank sizes, so instead of guessing them, this project designs its own slightly gentler launch from scratch — and only uses the real rides as a reality check in Section 4.</p>
+  <p class="small">Reference case: Maxx Force (Six Flags Great America, opened 2019) launches 0 → 78 mph (126 km/h, 35 m/s) in 1.8 s, about 1.98 g. S&amp;S does not publish piston sizes, tank volumes, or line diameters, so this project sizes its own self-consistent design case (Section 3) — deliberately gentler, at 1.27 g — and uses the real ride only as an order-of-magnitude validation (Section 4). In plain English: the company never published its pipe or tank sizes, so instead of guessing them, this project designs its own slightly gentler launch from scratch — and only uses the real ride as a reality check in Section 4.</p>
 </section>
 
 <!-- ============ 3. CALCS ============ -->
 <section id="calcs">
+  <style>
+    .words p{margin:0 0 10px}
+    .calcblock{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0 30px}
+    .calcblock h4{margin:0 0 6px;font-size:16px}
+    .calcblock .eq{margin:10px 0}
+    .boxed{border:2px solid var(--accent);border-radius:9px;padding:10px 14px;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:15px;margin:10px 0;background:var(--surface2)}
+    .pe{font-size:15px;color:var(--ink2);margin:2px 0 12px}
+    .pe b{color:var(--ink)}
+  </style>
   <p class="kicker">Section 3 · Theory &amp; calculations</p>
-  <h2>Theory first, then the calculations</h2>
-  <p>This section is organised the way the course's packed-bed runaway example organises its theory: start with the <strong>physical picture</strong>, state the <strong>model and its assumptions</strong>, derive the <strong>governing equations</strong> step by step, collect the <strong>dimensionless groups</strong> the answer actually depends on, compare <strong>two levels of model</strong> (shortcut vs. full), explain <strong>how the page solves it</strong> and <strong>where the sizing point sits</strong>, and finish with a formal <strong>parametric sensitivity</strong> analysis and a fully worked example. Design case throughout: 7,500 kg train, 0 → 35 m/s in 2.8 s. All numbers below match the live demo at its default settings.</p>
-  <div class="plain"><span class="plabel">In plain English — how to read this section</span><p>Don't panic at the equations. The story runs in order: first <em>what is physically happening</em>, then <em>what we simplify</em>, then six calculation steps, each doing one simple job: <strong>(1)</strong> How hard do we need to push the train? <strong>(2)</strong> What air pressure on what size piston gives that push? <strong>(3)</strong> How much air does one launch use up? <strong>(4)</strong> How big a storage tank holds that air? <strong>(5)</strong> How wide should the pipe be so we don't waste the pressure? <strong>(6)</strong> How big a compressor refills the tank between rides — and how cold does the air get? After the steps come the score numbers (dimensionless groups), a check of the shortcuts against the honest method, and a sensitivity table showing which input the answer cares about most. Each dark box is the real math for the course. The light boxes say the same thing in everyday words.</p></div>
+  <h2>Theory &amp; calculations — a textbook walkthrough</h2>
+  <p>Read each step the way a textbook presents it: <strong>the words come first</strong> — what is happening physically, which balance or law applies and why, what is assumed, and what each symbol means — <strong>and the calculation sits below the words</strong>. Following the derivation convention used throughout this section, the calculation blocks in Steps 1–6 are <strong>symbolic only</strong>: the governing equation and its algebraic rearrangement to the final symbolic form, with no numbers substituted. <strong>Every number is held back to the very end</strong> of this section, in <a href="#t-worked">“Plug in the numbers — worked example,”</a> where the design-case values are substituted into each symbolic result and every final number and numeric table appears. Every symbol is defined in the <a href="#t-nomen">nomenclature table</a>. The live demo in Section 1 evaluates these same steps.</p>
 
   <div class="theorynav" aria-label="Theory contents">
-    <b>Theory</b>
-    <a href="#t-picture">1 · Physical picture</a>
-    <a href="#t-model">2 · Model &amp; assumptions</a>
-    <a href="#t-steps">3 · Governing equations (Steps 1–6)</a>
-    <a href="#t-groups">4 · Dimensionless groups</a>
-    <a href="#t-levels">5 · Two levels of model</a>
-    <a href="#t-method">6 · How the page solves it</a>
-    <a href="#t-sizing">7 · The sizing point</a>
-    <a href="#t-sensitivity">8 · Parametric sensitivity</a>
-    <a href="#t-worked">9 · Worked example</a>
+    <b>Contents</b>
+    <a href="#t-steps">Steps 1–6 (words, then symbolic calculation)</a>
+    <a href="#t-nomen">Nomenclature</a>
+    <a href="#t-notes">Model notes</a>
+    <a href="#t-worked">Plug in the numbers — worked example</a>
   </div>
 
-  <h3 class="theory" id="t-picture"><span class="tnum">Theory 1 ·</span> The physical picture</h3>
-  <p>A pneumatic launch is an energy-timing problem before it is a plumbing problem. The train needs 4.59 MJ of kinetic energy delivered in 2.8 s, and — because thrust is roughly constant while speed keeps rising — the <em>instantaneous</em> power at the end of the launch (3.46 MW mechanical) is twice the average (1.73 MW). No reasonably sized compressor delivers that peak directly, so the system separates making power from spending it: the compressor charges a receiver tank slowly, and the compressed air — a gas spring — spends the stored energy in one burst through a piston. Three effects then decide whether the design works. First, the air itself is the working fluid and it is <em>compressible</em>: its density changes with pressure everywhere in the system, so every step needs the ideal-gas law, not a constant density. Second, the air must travel from receiver to cylinder through a real pipe, and the pressure it loses to wall friction and fittings grows brutally as the pipe narrows — roughly with 1/D⁴ to 1/D⁵ — which is why line sizing, a pure Transport 1 question, sits at the centre of the design. Third, expanding air cools: air dropping from 3.0 MPa to cylinder pressure in under 3 seconds falls toward −36 °C, which is a real constraint on valves and seals (Step 6). The “runaway” analogue in this system is not thermal but pneumatic: undersize the line a little and the loss does not grow a little, it explodes — at 0.10 m the air would need Mach 0.70 and the loss would exceed the pressure available to lose.</p>
-  <div class="plain"><span class="plabel">In plain English</span><p>The train needs a lot of energy, all at once, and the hardest moment is the very end of the launch. So the machine cheats on timing: charge slowly, spend fast. Then three things can ruin it — air is squishy, so its density keeps changing and every step has to track that; a pipe that's too skinny wastes pressure, and the waste balloons fast as the pipe shrinks; and expanding air gets seriously cold, which the hardware has to survive. Picking the pipe is the heart of this project.</p></div>
+  <h3>Before the steps — the model in two lines</h3>
+  <ul>
+    <li><strong>Control volumes:</strong> the train (momentum + energy balances), the piston/cylinder (force balance + ideal gas), the receiver and supply line (mass balance + mechanical-energy balance).</li>
+    <li><strong>Assumptions:</strong> constant acceleration; air an ideal gas at temperature T with gas constant R; supply-line density evaluated at the line pressure and held constant along the line; drag lumped as a single constant allowance F<sub>drag</sub>; expansion cooling computed in Step 6 but not fed back into Steps 3–5.</li>
+    <li><strong>Design-case inputs (symbols only here — their values appear only in the worked example at the end):</strong> train mass m; target speed v; launch time t; drag allowance F<sub>drag</sub>; piston diameter D; air temperature T and gas constant R; receiver charged at p<sub>1</sub>, ending at p<sub>2</sub>; supply-line length L at the line pressure; polytropic exponent n; recharge time t<sub>recharge</sub>.</li>
+  </ul>
 
-  <h3 class="theory" id="t-model"><span class="tnum">Theory 2 ·</span> The model: control volumes, balances, and assumptions</h3>
-  <p>The model uses three control volumes, and each governing equation in Steps 1–6 is a balance on one of them. <strong>The train</strong> is treated as a control mass: the linear momentum balance ΣF = m·a on it gives the thrust, and the mechanical-energy balance on it gives the kinetic energy and power the air system must supply (Step 1). <strong>The piston and cylinder</strong> are a force balance, F = p·A, plus an ideal-gas state calculation, pV = mRT, on the air that fills the swept volume (Steps 2–3). <strong>The receiver</strong> is a fixed control volume with a mass balance: it can only give up the air between its charged pressure and its end pressure, and that usable pressure drop — not the charge pressure alone — fixes the tank volume (Step 4). The <strong>supply line</strong> is a fixed control volume between receiver and cylinder: the mass balance on it is continuity in mass-flow form, ṁ = ρ·v·A (Step 5), and the mechanical-energy balance on it is what the pressure is spent on — useful pressure at the piston minus the Darcy–Weisbach friction loss and the minor losses in fittings. Step 6 runs the Step 4 mass balance in reverse, slowly, through a polytropic compression. The model rests on five assumptions, stated up front:</p>
-  <div class="card">
-    <h3>Modeling assumptions</h3>
-    <ul>
-      <li>Constant acceleration as a first approximation; in reality thrust varies as receiver pressure falls during the launch.</li>
-      <li>Air as an ideal gas at T = 300 K throughout (pV = mRT, R = 287 J/kg·K); at 3.0 MPa this is a good approximation for air, and the second-model critique in Section 6 is asked to check whether a compressibility-factor correction is warranted.</li>
-      <li>In the supply line, density is evaluated at a representative line pressure of 2.0 MPa abs and held constant along the 15 m line — reasonable because the recommended design loses only 6% of line pressure, so density varies little along it.</li>
-      <li>Drag allowance lumped as a constant 5 kN rather than a v² model.</li>
-      <li>Expansion cooling is calculated (Step 6) but its effect on density and flow is <em>not</em> fed back into Steps 3–5 — a stated limitation, priced in Theory 5.</li>
-    </ul>
+  <h3 id="t-steps">Step 1 — Train dynamics</h3>
+  <div class="words">
+    <p>The train is treated as a single point mass pushed along a straight, level track, so the governing statement is the linear momentum balance, ΣF = m·a: the net force on the train equals its mass m times its acceleration a. The launch is modelled with constant acceleration, starting from rest, so the speed builds linearly and the target speed v is reached at the end of the launch time t — that gives a = v / t directly, and the distance covered is the average speed (v/2) times t. Two energy statements follow from the same push: the kinetic energy the train must end up with, KE = ½·m·v², and the work the thrust does over the launch distance s, W = F<sub>d</sub>·s. Power is force times speed, so it peaks at the end of the launch, where v is largest; the average power is the work divided by the launch time.</p>
+    <p>One allowance is added before the result is used anywhere else. Rolling resistance and air resistance are lumped into a single constant drag allowance, F<sub>drag</sub>, and the piston must deliver the momentum-balance thrust <em>plus</em> that allowance. That larger force is the design thrust, F<sub>d</sub> — the quantity every later step is sized on.</p>
   </div>
-  <p style="margin-top:14px">Theory 5 below puts a price on the biggest of these simplifications — the receiver shortcut, the friction-only line, and the isothermal compression bound — so their cost is on the record rather than buried.</p>
+  <p class="pe"><b>Plain English:</b> Shove a heavy train to highway speed in a few seconds — the push, the energy, and the power all follow from how heavy it is, how fast it must go, and how little time it gets.</p>
+  <div class="calcblock">
+    <h4>Calculation — Step 1 (symbols only)</h4>
+    <div class="eq">a = v / t<br>
+s = v·t / 2 = ½·a·t²<br>
+F = m·a<br>
+F<sub>d</sub> = F + F<sub>drag</sub><br>
+KE = ½·m·v²<br>
+W = F<sub>d</sub>·s<br>
+P<sub>peak</sub> = F<sub>d</sub>·v &nbsp;·&nbsp; P<sub>avg</sub> = W / t</div>
+    <p class="boxed">Symbolic results: a = v/t · s = v·t/2 · F<sub>d</sub> = m·a + F<sub>drag</sub> · KE = ½·m·v² · W = F<sub>d</sub>·s · P<sub>peak</sub> = F<sub>d</sub>·v</p>
+  </div>
 
-  <h3>Nomenclature — every symbol in this section, defined</h3>
-  <p>Every letter in the equations below is listed here first, in plain English, with its units. The same definition is then repeated inline the first time each symbol appears in Steps 1–6, so you never have to scroll back. Two reading tips: a small lowered label after a letter says <em>which kind</em> it is — for example <span class="mono">ṁ<sub>peak</sub></span> is “peak mass flow” and <span class="mono">ΔP<sub>f</sub></span> is “pressure lost to friction” — and the Greek letter <span class="mono">Δ</span> (delta) just means “change in” or “difference across,” so <span class="mono">ΔP</span> is a pressure difference. Watch the cases: in this project <span class="mono">p</span> (lowercase) always means <em>pressure</em> and <span class="mono">P</span> (uppercase) always means <em>power</em> — the units confirm which is which.</p>
-  <div class="tablewrap nomen">
+  <h3>Step 2 — Piston: pressure into thrust</h3>
+  <div class="words">
+    <p>Pressure is force spread over area, so the force balance on the piston face is simply F = p·A: the cylinder pressure p, acting over the whole piston area A, must produce exactly the design thrust from Step 1. The area follows from the piston diameter, A = π·D²/4, and the balance is then rearranged to solve for the pressure the cylinder must hold, p = F<sub>d</sub> / A. Choosing D is the design trade here: a larger face needs less pressure for the same push, but sweeps more air per unit of travel in Step 3.</p>
+    <p>The pressure in this balance is <em>gauge</em> pressure, because the back of the piston faces the atmosphere — only the excess over atmospheric pressure does net work. The gas law in the next step needs <em>absolute</em> pressure, so atmospheric pressure is added back: p<sub>abs</sub> = p<sub>gauge</sub> + p<sub>atm</sub>.</p>
+  </div>
+  <p class="pe"><b>Plain English:</b> Air pressure pressing on the whole piston face adds up to exactly the push the train needs — a bigger face needs less pressure for the same push.</p>
+  <div class="calcblock">
+    <h4>Calculation — Step 2 (symbols only)</h4>
+    <div class="eq">F = p·A &nbsp;→&nbsp; A = F<sub>d</sub> / p &nbsp;·&nbsp; p<sub>gauge</sub> = F<sub>d</sub> / A<br>
+A = π·D²/4 &nbsp;→&nbsp; D = √(4A/π)<br>
+p<sub>abs</sub> = p<sub>gauge</sub> + p<sub>atm</sub></div>
+    <p class="boxed">Symbolic results: A = F<sub>d</sub>/p<sub>gauge</sub> · D = √(4A/π) · p<sub>abs</sub> = p<sub>gauge</sub> + p<sub>atm</sub></p>
+  </div>
+
+  <h3>Step 3 — Air per launch</h3>
+  <div class="words">
+    <p>Air is compressible, so how much air a launch uses is a mass question, not just a volume question — and the ideal-gas law, pV = mRT, is what connects the two. As the piston travels the launch distance s it sweeps out a volume V = A·s. The density of the air filling that volume at cylinder pressure follows from the same law, ρ = p<sub>abs</sub> / (R·T), where R is the gas constant for air and T is the absolute temperature. Multiplying density by swept volume gives the mass of air per launch, m<sub>air</sub>.</p>
+    <p>The flows follow from the piston's motion. The volumetric flow is piston area times piston speed, Q = A·v, so it peaks at top speed; the mass flow is density times that, ṁ = ρ·Q. The average mass flow over the launch is m<sub>air</sub> / t. The peak flow — not the average — is the demanding case, and it is the flow the supply line in Step 5 must be sized for.</p>
+  </div>
+  <p class="pe"><b>Plain English:</b> One launch drinks a large mass of air, and near top speed it flows fastest — that peak flow, not the average, is what the pipe in Step 5 must survive.</p>
+  <div class="calcblock">
+    <h4>Calculation — Step 3 (symbols only)</h4>
+    <div class="eq">V = A·s<br>
+ρ = p<sub>abs</sub> / (R·T) &nbsp;&nbsp;[from pV = mRT]<br>
+m<sub>air</sub> = ρ·V<br>
+Q<sub>peak</sub> = A·v<br>
+ṁ<sub>peak</sub> = ρ·Q<sub>peak</sub> = ρ·A·v &nbsp;·&nbsp; ṁ<sub>avg</sub> = m<sub>air</sub> / t</div>
+    <p class="boxed">Symbolic results: V = A·s · ρ = p<sub>abs</sub>/(R·T) · m<sub>air</sub> = ρ·V · ṁ<sub>peak</sub> = ρ·A·v</p>
+  </div>
+
+  <h3>Step 4 — Receiver sizing</h3>
+  <div class="words">
+    <p>The receiver is sized by a mass balance: the mass of air that leaves the tank during a launch must equal the drop in the mass stored inside it. Applying the ideal-gas law to the stored air at the charged pressure p<sub>1</sub> and again at the end-of-launch pressure p<sub>2</sub>, the stored-mass drop is (p<sub>1</sub> − p<sub>2</sub>)·V<sub>tank</sub> / (R·T). Setting that drop equal to m<sub>air</sub> from Step 3 and rearranging gives the tank volume.</p>
+    <p>The key point is that the tank never empties. Only the <em>usable drop</em> (p<sub>1</sub> − p<sub>2</sub>) delivers air, and p<sub>2</sub> must stay above the cylinder's absolute pressure need from Step 2, or the piston could not be fed at the end of the launch. Sizing on p<sub>1</sub> alone would understate the tank badly. The consequence — charge to a higher p<sub>1</sub> and the same air mass fits in a smaller tank, at the cost of a higher pressure class — is quantified in the receiver tradeoff table in the worked example at the end of this section.</p>
+  </div>
+  <p class="pe"><b>Plain English:</b> The tank never empties — only the usable pressure drop does the delivering, so the tank is sized on that drop, not on its full pressure.</p>
+  <div class="calcblock">
+    <h4>Calculation — Step 4 (symbols only)</h4>
+    <div class="eq">m<sub>air</sub> = (p<sub>1</sub> − p<sub>2</sub>)·V<sub>tank</sub> / (R·T)<br>
+→ V<sub>tank</sub> = m<sub>air</sub>·R·T / (p<sub>1</sub> − p<sub>2</sub>)</div>
+    <p class="boxed">Symbolic result: V<sub>tank</sub> = m<sub>air</sub>·R·T / (p<sub>1</sub> − p<sub>2</sub>)</p>
+  </div>
+
+  <h3>Step 5 — Supply-line sizing</h3>
+  <div class="words">
+    <p>Two statements govern the line. Continuity, in mass form ṁ = ρ·v·A, sets the air velocity in the pipe for a chosen diameter: at the peak mass flow from Step 3, a smaller area means a faster flow. The mechanical-energy balance then prices that velocity — the Darcy–Weisbach equation gives the friction loss, f·(L/D)·(ρv²/2), and each valve, bend, and manifold entry adds a minor loss, ΣK·(ρv²/2), where f is the Darcy friction factor from the Haaland correlation, L is the line length, D is the line diameter, μ is the air viscosity, and ΣK is the summed minor-loss coefficient. The line is evaluated at the line pressure, where the density ρ<sub>line</sub> is taken from the ideal-gas law.</p>
+    <p>The model holds the density constant along the line, which is only defensible while the flow stays slow compared with the speed of sound — so the Mach number, M = v / c, is checked for every diameter, alongside the Reynolds number Re = ρ·v·D / μ, which confirms the flow is turbulent and sets f through Haaland. Because the losses scale with v² and v scales with 1/D², the total loss falls very steeply as the diameter grows — which is exactly what the diameter table in the worked example at the end of this section shows. In a short, fat line the minor losses, not wall friction, dominate the recommended size.</p>
+  </div>
+  <p class="pe"><b>Plain English:</b> In a wide enough pipe the air cruises slowly and loses only a small share of its pressure on the way — and in a short, fat line most of that loss is the valves and bends, not the pipe wall.</p>
+  <div class="calcblock">
+    <h4>Calculation — Step 5 (symbols only)</h4>
+    <div class="eq">A<sub>line</sub> = π·D²/4<br>
+v = ṁ<sub>peak</sub> / (ρ<sub>line</sub>·A<sub>line</sub>) &nbsp;&nbsp;[continuity, mass form]<br>
+Re = ρ·v·D / μ &nbsp;·&nbsp; M = v / c, &nbsp;c = √(γRT)<br>
+1/√f = −1.8·log<sub>10</sub>[ ((ε/D)/3.7)<sup>1.11</sup> + 6.9/Re ] &nbsp;&nbsp;[Haaland]<br>
+ΔP<sub>f</sub> = f·(L/D)·(ρv²/2) &nbsp;&nbsp;[Darcy–Weisbach]<br>
+ΔP<sub>minor</sub> = ΣK·(ρv²/2)<br>
+ΔP<sub>total</sub> = ΔP<sub>f</sub> + ΔP<sub>minor</sub></div>
+    <p class="boxed">Symbolic results: v = ṁ<sub>peak</sub>/(ρ<sub>line</sub>·A<sub>line</sub>) · ΔP<sub>total</sub> = [ f·(L/D) + ΣK ]·(ρv²/2)</p>
+  </div>
+
+  <h3>Step 6 — Compressor, recharge, expansion cooling</h3>
+  <div class="words">
+    <p>Between launches the compressor runs the Step 4 mass balance in reverse, slowly: it must replace m<sub>air</sub> kilograms of air, compressing them from atmospheric pressure up to the receiver pressure p<sub>1</sub>. Real compression is neither perfectly slow nor perfectly insulated, so it is modelled as a polytropic process with exponent n, between the isothermal limit and the adiabatic limit. The polytropic work formula gives the work per kilogram, w; multiplying by m<sub>air</sub> gives the energy per launch, and dividing by the allowed recharge time gives the compressor power. The two limits are evaluated as bounds in the worked example, so the design value can be seen sitting between them.</p>
+    <p>The same polytropic relation, run as an expansion from receiver pressure down to cylinder pressure, gives the temperature of the delivered air — expanding air cools, and the result is well below freezing, which is a real design constraint on valves and seals. The step closes with the normalised sensitivities, s(y; φ) = ∂ ln y / ∂ ln φ — the % change in an output per 1% change in an input — which identify which choices the design is most sensitive to: line diameter for pressure loss, and cylinder pressure for air mass. Their values appear in the worked example.</p>
+  </div>
+  <p class="pe"><b>Plain English:</b> A modest compressor refills the tank slowly between rides — the tank does the launching, not the compressor — but the expanding air chills hard, so the valves and seals have to work frozen.</p>
+  <div class="calcblock">
+    <h4>Calculation — Step 6 (symbols only)</h4>
+    <div class="eq">w = [n/(n−1)]·R·T<sub>1</sub>·[(p<sub>1</sub>/p<sub>atm</sub>)<sup>(n−1)/n</sup> − 1] &nbsp;&nbsp;[polytropic specific work]<br>
+E<sub>comp</sub> = w · m<sub>air</sub><br>
+P<sub>comp</sub> = E<sub>comp</sub> / t<sub>recharge</sub><br>
+T<sub>2</sub> = T<sub>1</sub>·(p<sub>abs</sub>/p<sub>1</sub>)<sup>(n−1)/n</sup> &nbsp;&nbsp;[expansion cooling]<br>
+s(y; φ) = ∂ ln y / ∂ ln φ &nbsp;&nbsp;[normalised sensitivity]</div>
+    <p class="boxed">Symbolic results: E<sub>comp</sub> = w·m<sub>air</sub> · P<sub>comp</sub> = E<sub>comp</sub>/t<sub>recharge</sub> · T<sub>2</sub> = T<sub>1</sub>·(p<sub>abs</sub>/p<sub>1</sub>)<sup>(n−1)/n</sup></p>
+  </div>
+
+<h3 id="t-nomen">Nomenclature — every symbol, defined</h3>
+  <p>Lowercase <span class="mono">p</span> is always pressure; uppercase <span class="mono">P</span> is always power. <span class="mono">Δ</span> means “difference across,” and a subscript names the kind (<span class="mono">ṁ<sub>peak</sub></span>, <span class="mono">ΔP<sub>f</sub></span>).</p>
+<div class="tablewrap nomen">
     <table class="stack-table">
       <thead><tr><th class="sym">Symbol</th><th>What it means — in plain English</th><th>Units</th></tr></thead>
       <tbody>
         <tr class="grp"><td colspan="3">Train and motion — Step 1</td></tr>
-        <tr><td class="sym" data-l="Symbol">m</td><td data-l="Meaning">Mass of the loaded train — how much “stuff” has to be pushed. Design case: 7,500 kg, about five cars’ worth.</td><td class="units" data-l="Units">kg (kilograms)</td></tr>
-        <tr><td class="sym" data-l="Symbol">v</td><td data-l="Meaning">Speed of the train. Starts at 0 and reaches the target speed at the end of the launch. (In Step 5 the same letter means the speed of the air inside the pipe — the words around it say which.)</td><td class="units" data-l="Units">m/s (metres per second)</td></tr>
-        <tr><td class="sym" data-l="Symbol">t</td><td data-l="Meaning">Launch time — how long the push lasts, from rest to target speed. Design case: 2.8 s.</td><td class="units" data-l="Units">s (seconds)</td></tr>
+        <tr><td class="sym" data-l="Symbol">m</td><td data-l="Meaning">Mass of the loaded train — how much “stuff” has to be pushed.</td><td class="units" data-l="Units">kg (kilograms)</td></tr>
+        <tr><td class="sym" data-l="Symbol">v</td><td data-l="Meaning">Speed of the train. Starts at rest and reaches the target speed at the end of the launch. (In Step 5 the same letter means the speed of the air inside the pipe — the words around it say which.)</td><td class="units" data-l="Units">m/s (metres per second)</td></tr>
+        <tr><td class="sym" data-l="Symbol">t</td><td data-l="Meaning">Launch time — how long the push lasts, from rest to target speed.</td><td class="units" data-l="Units">s (seconds)</td></tr>
         <tr><td class="sym" data-l="Symbol">a</td><td data-l="Meaning">Acceleration — how quickly the speed builds up. Bigger a means a harder shove and a harder press back into the seat.</td><td class="units" data-l="Units">m/s²</td></tr>
-        <tr><td class="sym" data-l="Symbol">s</td><td data-l="Meaning">Launch distance — how much track the train covers while speeding up. Not to be confused with “s” for seconds in the Units column. Design case: 49 m.</td><td class="units" data-l="Units">m (metres)</td></tr>
-        <tr><td class="sym" data-l="Symbol">g</td><td data-l="Meaning">Standard gravity, 9.81 m/s². Used only to express acceleration as a multiple of normal gravity — “1.27 g” means riders feel 1.27× their normal weight pressing them back.</td><td class="units" data-l="Units">m/s²</td></tr>
-        <tr><td class="sym" data-l="Symbol">F</td><td data-l="Meaning">Thrust from the momentum balance alone, F = m·a. Design case: 93.8 kN.</td><td class="units" data-l="Units">N (newtons); shown in kN</td></tr>
-        <tr><td class="sym" data-l="Symbol">F<sub>d</sub></td><td data-l="Meaning">Design thrust — the push the piston must actually deliver: F plus the drag allowance, F<sub>d</sub> = 98.8 kN.</td><td class="units" data-l="Units">N; shown in kN</td></tr>
-        <tr><td class="sym" data-l="Symbol">F<sub>drag</sub></td><td data-l="Meaning">The part of the push spent fighting rolling resistance (wheels on track) and air resistance, lumped together as one allowance. Design case: 5,000 N = 5 kN.</td><td class="units" data-l="Units">N; shown in kN</td></tr>
-        <tr><td class="sym" data-l="Symbol">KE</td><td data-l="Meaning">Kinetic energy — the energy the train has simply because it is moving. The launch machine has to supply all of it. Design case: 4.59 MJ.</td><td class="units" data-l="Units">J (joules); shown in MJ</td></tr>
-        <tr><td class="sym" data-l="Symbol">W</td><td data-l="Meaning">Work done by the design thrust over the launch distance, W = F<sub>d</sub>·s = 4.84 MJ — slightly more than KE, because part of it is spent on drag along the way.</td><td class="units" data-l="Units">J; shown in MJ</td></tr>
-        <tr><td class="sym" data-l="Symbol">P</td><td data-l="Meaning">Power (uppercase P) — how fast energy is being delivered at a given moment. Labelled versions: peak mechanical power F<sub>d</sub>·v = 3.46 MW at top speed; average power W ÷ t = 1.73 MW; compressor power in Step 6. Never pressure — that is lowercase p.</td><td class="units" data-l="Units">W (watts); shown in MW or kW</td></tr>
+        <tr><td class="sym" data-l="Symbol">s</td><td data-l="Meaning">Launch distance — how much track the train covers while speeding up. Not to be confused with “s” for seconds in the Units column.</td><td class="units" data-l="Units">m (metres)</td></tr>
+        <tr><td class="sym" data-l="Symbol">g</td><td data-l="Meaning">Standard gravity. Used only to express acceleration as a multiple of normal gravity — “so many g” means riders feel that multiple of their normal weight pressing them back.</td><td class="units" data-l="Units">m/s²</td></tr>
+        <tr><td class="sym" data-l="Symbol">F</td><td data-l="Meaning">Thrust from the momentum balance alone, F = m·a.</td><td class="units" data-l="Units">N (newtons); shown in kN</td></tr>
+        <tr><td class="sym" data-l="Symbol">F<sub>d</sub></td><td data-l="Meaning">Design thrust — the push the piston must actually deliver: F plus the drag allowance.</td><td class="units" data-l="Units">N; shown in kN</td></tr>
+        <tr><td class="sym" data-l="Symbol">F<sub>drag</sub></td><td data-l="Meaning">The part of the push spent fighting rolling resistance (wheels on track) and air resistance, lumped together as one constant allowance.</td><td class="units" data-l="Units">N; shown in kN</td></tr>
+        <tr><td class="sym" data-l="Symbol">KE</td><td data-l="Meaning">Kinetic energy — the energy the train has simply because it is moving. The launch machine has to supply all of it.</td><td class="units" data-l="Units">J (joules); shown in MJ</td></tr>
+        <tr><td class="sym" data-l="Symbol">W</td><td data-l="Meaning">Work done by the design thrust over the launch distance, W = F<sub>d</sub>·s — slightly more than KE, because part of it is spent on drag along the way.</td><td class="units" data-l="Units">J; shown in MJ</td></tr>
+        <tr><td class="sym" data-l="Symbol">P</td><td data-l="Meaning">Power (uppercase P) — how fast energy is being delivered at a given moment. Labelled versions: peak mechanical power P<sub>peak</sub> = F<sub>d</sub>·v at top speed; average power P<sub>avg</sub> = W ÷ t; compressor power P<sub>comp</sub> in Step 6. Never pressure — that is lowercase p.</td><td class="units" data-l="Units">W (watts); shown in MW or kW</td></tr>
         <tr class="grp"><td colspan="3">Piston and air charge — Steps 2 and 3</td></tr>
-        <tr><td class="sym" data-l="Symbol">p</td><td data-l="Meaning">Pressure (lowercase p) — how hard the air pushes per unit area. Cylinder pressure in the design case: 0.97 MPa gauge = 1.07 MPa absolute. “Gauge” is measured above atmospheric pressure; “absolute” (abs) is measured from vacuum. Receiver pressures: p<sub>1</sub> = 3.0 MPa abs charged, p<sub>2</sub> = 1.2 MPa abs at the end of a launch.</td><td class="units" data-l="Units">Pa (pascals); shown in MPa (1 MPa ≈ 10 bar)</td></tr>
-        <tr><td class="sym" data-l="Symbol">A</td><td data-l="Meaning">Area the pressure pushes on, or flows through. For the piston, A = π·D²/4 = 0.1018 m²; in Step 5 the same letter is the pipe's cross-sectional area.</td><td class="units" data-l="Units">m²</td></tr>
-        <tr><td class="sym" data-l="Symbol">D</td><td data-l="Meaning">A diameter. Labelled by context: piston diameter 0.36 m in Steps 2–3; supply-line inside diameter in Step 5, where 0.10–0.30 m are compared and 0.25 m is recommended.</td><td class="units" data-l="Units">m (metres)</td></tr>
-        <tr><td class="sym" data-l="Symbol">ρ</td><td data-l="Meaning">Density of the air (Greek letter rho) — mass per unit volume. Because air is compressible it changes with pressure: 12.44 kg/m³ at cylinder pressure, 23.2 kg/m³ in the supply line at 2.0 MPa abs, only ~1.2 kg/m³ in the room around you.</td><td class="units" data-l="Units">kg/m³</td></tr>
-        <tr><td class="sym" data-l="Symbol">R</td><td data-l="Meaning">The gas constant for air — the number that ties pressure, volume, mass, and temperature together in pV = mRT. R = 287 J/kg·K for air.</td><td class="units" data-l="Units">J/kg·K</td></tr>
-        <tr><td class="sym" data-l="Symbol">T</td><td data-l="Meaning">Absolute temperature of the air. Design value 300 K (about 27 °C). Kelvin is used because gas laws need temperature measured from absolute zero.</td><td class="units" data-l="Units">K (kelvin)</td></tr>
-        <tr><td class="sym" data-l="Symbol">m<sub>air</sub></td><td data-l="Meaning">Mass of air used in one launch — the air that ends up filling the cylinder's swept volume at cylinder pressure. Design case: 62.1 kg, about as much as an adult person weighs.</td><td class="units" data-l="Units">kg</td></tr>
-        <tr><td class="sym" data-l="Symbol">V</td><td data-l="Meaning">Volume. Labelled versions: swept (displaced) volume of the cylinder, A·s = 4.99 m³; receiver volume V<sub>tank</sub> ≈ 2.97 m³ from Step 4.</td><td class="units" data-l="Units">m³; also shown in L</td></tr>
+        <tr><td class="sym" data-l="Symbol">p</td><td data-l="Meaning">Pressure (lowercase p) — how hard the air pushes per unit area. “Gauge” is measured above atmospheric pressure; “absolute” (abs) is measured from vacuum, and p<sub>abs</sub> = p<sub>gauge</sub> + p<sub>atm</sub>. Receiver pressures: p<sub>1</sub> charged, p<sub>2</sub> at the end of a launch.</td><td class="units" data-l="Units">Pa (pascals); shown in MPa</td></tr>
+        <tr><td class="sym" data-l="Symbol">p<sub>atm</sub></td><td data-l="Meaning">Atmospheric pressure — the pressure of the air around the ride, pushing on the back of the piston and the starting point for the compressor.</td><td class="units" data-l="Units">Pa; shown in MPa</td></tr>
+        <tr><td class="sym" data-l="Symbol">A</td><td data-l="Meaning">Area the pressure pushes on, or flows through. For the piston, A = π·D²/4; in Step 5 the same letter is the pipe's cross-sectional area, A<sub>line</sub>.</td><td class="units" data-l="Units">m²</td></tr>
+        <tr><td class="sym" data-l="Symbol">D</td><td data-l="Meaning">A diameter. Labelled by context: piston diameter in Steps 2–3; supply-line inside diameter in Step 5.</td><td class="units" data-l="Units">m (metres)</td></tr>
+        <tr><td class="sym" data-l="Symbol">ρ</td><td data-l="Meaning">Density of the air (Greek letter rho) — mass per unit volume. Because air is compressible it changes with pressure: ρ = p / (R·T) at whatever pressure applies — cylinder pressure in Step 3, line pressure (ρ<sub>line</sub>) in Step 5.</td><td class="units" data-l="Units">kg/m³</td></tr>
+        <tr><td class="sym" data-l="Symbol">R</td><td data-l="Meaning">The gas constant for air — the number that ties pressure, volume, mass, and temperature together in pV = mRT.</td><td class="units" data-l="Units">J/kg·K</td></tr>
+        <tr><td class="sym" data-l="Symbol">T</td><td data-l="Meaning">Absolute temperature of the air. Kelvin is used because gas laws need temperature measured from absolute zero. Labelled T<sub>1</sub> before a compression or expansion and T<sub>2</sub> after it.</td><td class="units" data-l="Units">K (kelvin)</td></tr>
+        <tr><td class="sym" data-l="Symbol">m<sub>air</sub></td><td data-l="Meaning">Mass of air used in one launch — the air that ends up filling the cylinder's swept volume at cylinder pressure.</td><td class="units" data-l="Units">kg</td></tr>
+        <tr><td class="sym" data-l="Symbol">V</td><td data-l="Meaning">Volume. Labelled versions: swept (displaced) volume of the cylinder, V = A·s; receiver volume V<sub>tank</sub> from Step 4.</td><td class="units" data-l="Units">m³; also shown in L</td></tr>
         <tr class="grp"><td colspan="3">Pipe flow and friction — Step 5</td></tr>
-        <tr><td class="sym" data-l="Symbol">Q</td><td data-l="Meaning">Volumetric flow rate — how much volume of air passes per second at the local density. Peak in the cylinder: A·v = 3.56 m³/s.</td><td class="units" data-l="Units">m³/s</td></tr>
-        <tr><td class="sym" data-l="Symbol">ṁ</td><td data-l="Meaning">Mass flow rate (m with a dot over it) — how many kilograms of air pass per second. For a compressible fluid this, not Q, is what stays constant along the pipe. Peak 44.3 kg/s; average over the launch 22.2 kg/s.</td><td class="units" data-l="Units">kg/s</td></tr>
-        <tr><td class="sym" data-l="Symbol">Re</td><td data-l="Meaning">Reynolds number — a score for how the flow behaves: low Re = smooth and orderly (laminar), high Re = rough and swirly (turbulent). Here Re is in the millions, so the flow is deeply turbulent. It has no units; it is purely a comparison number.</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
-        <tr><td class="sym" data-l="Symbol">M</td><td data-l="Meaning">Mach number — the air's speed divided by the speed of sound at the same conditions. M = 0.11 in the recommended line (calm); M = 0.70 in the 0.10 m line (approaching choked flow).</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
-        <tr><td class="sym" data-l="Symbol">c</td><td data-l="Meaning">Speed of sound in the air in the line, c = √(γRT) = 347 m/s at 300 K. γ (Greek gamma) = 1.4 is air's ratio of specific heats.</td><td class="units" data-l="Units">m/s</td></tr>
-        <tr><td class="sym" data-l="Symbol">μ</td><td data-l="Meaning">Dynamic viscosity of air (Greek letter mu) — how “sticky” the air is. μ = 1.85 × 10⁻⁵ Pa·s, and unlike a liquid's, it barely changes with pressure.</td><td class="units" data-l="Units">Pa·s</td></tr>
-        <tr><td class="sym" data-l="Symbol">f</td><td data-l="Meaning">Darcy friction factor — a number that says how “grippy” the pipe wall is for this flow. It is read from the flow conditions using the Haaland formula (an approximation of the Moody chart). Bigger f = more pressure wasted on friction. Design line: f = 0.0136.</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
-        <tr><td class="sym" data-l="Symbol">ε</td><td data-l="Meaning">Pipe roughness height (Greek letter epsilon) — the average size of the tiny bumps on the inside wall of the pipe. For commercial steel, ε ≈ 0.045 mm. It appears as the ratio ε/D: bumps matter more in a narrow pipe.</td><td class="units" data-l="Units">m; given as mm</td></tr>
-        <tr><td class="sym" data-l="Symbol">K, ΣK</td><td data-l="Meaning">Minor-loss coefficient — how much pressure each fitting (valve, bend, manifold entry) wastes, counted in units of the flow’s dynamic pressure ρv²/2. K is one fitting; ΣK (Greek capital sigma = “add them all up”) is the total for all fittings together. Design case: ΣK = 6.</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
-        <tr><td class="sym" data-l="Symbol">L</td><td data-l="Meaning">Length of the supply line from receiver to cylinder. Longer pipe = more wall to rub against = more loss. Design case: 15 m.</td><td class="units" data-l="Units">m (metres)</td></tr>
-        <tr><td class="sym" data-l="Symbol">ΔP</td><td data-l="Meaning">Pressure difference or pressure lost. Labelled versions: <span class="mono">ΔP<sub>f</sub></span> = pressure lost to pipe friction, <span class="mono">ΔP<sub>minor</sub></span> = pressure lost in valves, bends and the manifold, <span class="mono">ΔP<sub>total</sub></span> = their sum.</td><td class="units" data-l="Units">Pa; shown in kPa or MPa</td></tr>
+        <tr><td class="sym" data-l="Symbol">Q</td><td data-l="Meaning">Volumetric flow rate — how much volume of air passes per second at the local density. Peak in the cylinder: Q<sub>peak</sub> = A·v.</td><td class="units" data-l="Units">m³/s</td></tr>
+        <tr><td class="sym" data-l="Symbol">ṁ</td><td data-l="Meaning">Mass flow rate (m with a dot over it) — how many kilograms of air pass per second. For a compressible fluid this, not Q, is what stays constant along the pipe. Labelled ṁ<sub>peak</sub> at top speed and ṁ<sub>avg</sub> averaged over the launch.</td><td class="units" data-l="Units">kg/s</td></tr>
+        <tr><td class="sym" data-l="Symbol">Re</td><td data-l="Meaning">Reynolds number — a score for how the flow behaves: low Re = smooth and orderly (laminar), high Re = rough and swirly (turbulent). It has no units; it is purely a comparison number.</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
+        <tr><td class="sym" data-l="Symbol">M</td><td data-l="Meaning">Mach number — the air's speed divided by the speed of sound at the same conditions. Small M means the constant-density line model is sound; M approaching one means choked flow.</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
+        <tr><td class="sym" data-l="Symbol">c</td><td data-l="Meaning">Speed of sound in the air in the line, c = √(γRT). γ (Greek gamma) is air's ratio of specific heats.</td><td class="units" data-l="Units">m/s</td></tr>
+        <tr><td class="sym" data-l="Symbol">μ</td><td data-l="Meaning">Dynamic viscosity of air (Greek letter mu) — how “sticky” the air is. Unlike a liquid's, it barely changes with pressure.</td><td class="units" data-l="Units">Pa·s</td></tr>
+        <tr><td class="sym" data-l="Symbol">f</td><td data-l="Meaning">Darcy friction factor — a number that says how “grippy” the pipe wall is for this flow. It is read from the flow conditions using the Haaland formula (an approximation of the Moody chart). Bigger f = more pressure wasted on friction.</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
+        <tr><td class="sym" data-l="Symbol">ε</td><td data-l="Meaning">Pipe roughness height (Greek letter epsilon) — the average size of the tiny bumps on the inside wall of the pipe. It appears as the ratio ε/D: bumps matter more in a narrow pipe.</td><td class="units" data-l="Units">m; given as mm</td></tr>
+        <tr><td class="sym" data-l="Symbol">K, ΣK</td><td data-l="Meaning">Minor-loss coefficient — how much pressure each fitting (valve, bend, manifold entry) wastes, counted in units of the flow's dynamic pressure ρv²/2. K is one fitting; ΣK (Greek capital sigma = “add them all up”) is the total for all fittings together.</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
+        <tr><td class="sym" data-l="Symbol">L</td><td data-l="Meaning">Length of the supply line from receiver to cylinder. Longer pipe = more wall to rub against = more loss.</td><td class="units" data-l="Units">m (metres)</td></tr>
+        <tr><td class="sym" data-l="Symbol">ΔP</td><td data-l="Meaning">Pressure difference or pressure lost. Labelled versions: <span class="mono">ΔP<sub>f</sub></span> = pressure lost to pipe friction, <span class="mono">ΔP<sub>minor</sub></span> = pressure lost in valves, bends and the manifold, <span class="mono">ΔP</span> = their sum.</td><td class="units" data-l="Units">Pa; shown in kPa or MPa</td></tr>
         <tr class="grp"><td colspan="3">Receiver and recharge — Steps 4 and 6</td></tr>
-        <tr><td class="sym" data-l="Symbol">n</td><td data-l="Meaning">Polytropic exponent — a dial describing how a gas process behaves between two ideals. n = 1 means slow with time to exchange heat (isothermal); n = 1.4 means very fast with no heat exchange (adiabatic). Compression uses n = 1.3; the expansion-cooling estimate uses n = 1.3 with 1.2 and 1.4 as brackets.</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
-        <tr><td class="sym" data-l="Symbol">η</td><td data-l="Meaning">Efficiency (Greek letter eta) — the share of energy that survives a step instead of being lost as heat and friction. 1.0 would be perfect; real machines are lower. Here it is the link between the ideal compression power (305 kW) and installed motor size: a 500 hp (373 kW) unit covers the ideal power with room for drive and motor losses.</td><td class="units" data-l="Units">No units (a fraction, 0–1)</td></tr>
-        <tr><td class="sym" data-l="Symbol">t<sub>recharge</sub></td><td data-l="Meaning">Recharge time — how long the compressor takes to replace the air used and re-pressurise the receiver between launches. Design case: 90 s. A longer, lazier refill is why the compressor can be so much smaller than the launch power.</td><td class="units" data-l="Units">s (seconds)</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="small">Worked example of reading an equation with this table: <span class="mono">ṁ<sub>peak</sub> = ρ · A · v</span> reads as “the most air the pipe must carry (kilograms per second) equals the air's density at cylinder pressure, times the piston's face area, times the train's top speed” — the piston sweeping faster demands air faster, in exact proportion.</p>
-
-  <h3 id="t-steps">Step 1 — Train dynamics (momentum balance on the train)</h3>
-  <p class="deriv"><b>Derivation.</b> Take the train as the control mass. The linear momentum balance ΣF = m·a, with a taken constant, integrates directly to v = a·t and s = ½·a·t². The piston thrust must supply m·a plus the lumped drag allowance. Force × distance then gives the work the air must do, force × velocity gives the instantaneous mechanical power — which peaks at top speed, because the force is constant while v is still rising — and ½·m·v² is the kinetic energy every later step has to deliver.</p>
-  <div class="eq">
-a = v / t = 35 / 2.8 = 12.5 m/s²  <span class="c">(1.27 g)</span><br>
-s = ½·a·t² = 49 m<br>
-F = m·a = 7,500 × 12.5 = 93.8 kN · F<sub>d</sub> = F + F<sub>drag</sub> = 93.8 + 5 ≈ 98.8 kN  <span class="c">(design thrust)</span><br>
-KE = ½·m·v² = 4.59 MJ · W = F<sub>d</sub>·s = 4.84 MJ<br>
-P<sub>peak,mech</sub> = F<sub>d</sub>·v = 3.46 MW <span class="c">(constant thrust: power peaks at top speed)</span> · P<sub>avg</sub> = W / t = 1.73 MW
-  </div>
-  <div class="where"><span class="wlabel">Symbols in Step 1 — where they first appear</span><ul>
-    <li><span class="sym">a</span> — acceleration, how fast the speed builds up <span class="units">(m/s²)</span>. Here a = 12.5 m/s².</li>
-    <li><span class="sym">v</span> — train speed, from 0 up to the target speed <span class="units">(m/s)</span>. Target v = 35 m/s.</li>
-    <li><span class="sym">t</span> — launch time, how long the push lasts <span class="units">(s, seconds)</span>. Here t = 2.8 s.</li>
-    <li><span class="sym">g</span> — standard gravity, 9.81 <span class="units">(m/s²)</span>; “1.27 g” just means a ÷ g, the push riders feel compared with normal gravity.</li>
-    <li><span class="sym">s</span> — launch distance covered while speeding up <span class="units">(m, metres)</span>. Here s = 49 m. (Not seconds — seconds are the unit of t.)</li>
-    <li><span class="sym">F</span> — thrust from the momentum balance alone <span class="units">(N, newtons; shown in kN)</span>. Here F = 93.8 kN.</li>
-    <li><span class="sym">m</span> — loaded train mass <span class="units">(kg)</span>. Here m = 7,500 kg.</li>
-    <li><span class="sym">F<sub>drag</sub></span> — extra force allowed for rolling resistance plus air resistance <span class="units">(N)</span>. Here F<sub>drag</sub> = 5,000 N.</li>
-    <li><span class="sym">F<sub>d</sub></span> — design thrust, F plus the drag allowance — the push the piston is sized to deliver <span class="units">(N; shown in kN)</span>. Here F<sub>d</sub> = 98.8 kN.</li>
-    <li><span class="sym">KE</span> — kinetic energy, the energy of the moving train <span class="units">(J, joules; shown in MJ)</span>. Here KE = 4.59 MJ.</li>
-    <li><span class="sym">W</span> — work done by the design thrust over the launch distance <span class="units">(J; shown in MJ)</span>. Here W = 4.84 MJ.</li>
-    <li><span class="sym">P</span> — power (uppercase) <span class="units">(W, watts; shown in MW)</span>. Peak mechanical power F<sub>d</sub>·v = 3.46 MW; average power W ÷ t = 1.73 MW.</li>
-  </ul></div>
-  <div class="plain"><span class="plabel">In plain English — Step 1</span><p><strong>How hard do we need to push?</strong> The train weighs about as much as five cars (7,500 kg) and has to reach highway speed (78 mph) in 2.8 seconds. That takes a push of roughly 99,000 newtons — imagine about 10 tonnes of weight shoving it forward. Riders feel it as being pressed back into their seats at about 1.3 times normal gravity — noticeably gentler than Maxx Force (about 2 g) or Dodonpa (about 2.7 g). The train needs about 49 meters of track to do it — roughly half a football field — and by the end it's carrying 4.59 million joules of moving energy, delivered in under 3 seconds.</p></div>
-
-  <h3>Step 2 — The piston: turning pressure into thrust</h3>
-  <p class="deriv"><b>Derivation.</b> Pressure is force per unit area by definition, so the force balance on the piston face is simply F = p·A, with A = π·D²/4 for a round piston. Run it backwards: choose a piston diameter, and the cylinder pressure the air must reach is fixed by the design thrust from Step 1. Pressure here is <em>gauge</em> — the piston's back side breathes ordinary atmospheric air, so only the pressure above atmospheric does net work. Add one atmosphere (0.101 MPa) to get the absolute pressure the gas law needs in Step 3.</p>
-  <div class="eq">
-A = π·D²/4 = π × 0.36² / 4 = 0.1018 m²<br>
-p<sub>needed</sub> = F<sub>d</sub> / A = 98.8 kN / 0.1018 m² = 0.970 MPa gauge  <span class="c">(1.07 MPa abs)</span>
-  </div>
-  <div class="where"><span class="wlabel">Symbols in Step 2 — where they first appear</span><ul>
-    <li><span class="sym">p</span> — pressure (lowercase p), the push per unit area on the piston face <span class="units">(Pa, pascals; shown in MPa)</span>. Gauge = above atmospheric; absolute = from vacuum.</li>
-    <li><span class="sym">A</span> — piston face area, A = π·D²/4 <span class="units">(m²)</span>. (π is the circle constant, ≈ 3.1416, with no units.) Here A = 0.1018 m².</li>
-    <li><span class="sym">D</span> — piston diameter <span class="units">(m)</span>. Here D = 0.36 m — about the size of a large pizza.</li>
-  </ul></div>
-  <div class="plain"><span class="plabel">In plain English — Step 2</span><p><strong>What turns air pressure into a push?</strong> A piston — a plug about 36 cm across, like a large pizza — sliding inside a cylinder. Air pressure pushes on the whole face of the plug at once, and the pushes add up: at 0.97 MPa (about 140 psi, roughly four times a car tire's pressure, spread over that whole face), they total the ~99 kN shove the train needs. A wider plug would need less pressure for the same shove — but it would gulp more air every metre, which is the tradeoff Steps 3 and 4 price out.</p></div>
-
-  <h3>Step 3 — Air per launch (ideal-gas law)</h3>
-  <p class="deriv"><b>Derivation.</b> As the piston travels the launch distance s, it sweeps out a volume V = A·s that ends up filled with air at cylinder pressure. The ideal-gas law pV = mRT, solved for density ρ = p ÷ (R·T), turns that volume at that pressure into a mass of air — the amount the receiver must supply per launch (Step 4) and the compressor must replace (Step 6). Differentiating the swept volume gives the flow demand: volumetric flow Q = A·v, which peaks at top speed, and mass flow ṁ = ρ·Q.</p>
-  <div class="eq">
-V = A·s = 0.1018 × 49 = 4.99 m³  <span class="c">(volume swept by the piston)</span><br>
-ρ = p / (R·T) = 1.07 MPa / (287 × 300) = 12.44 kg/m³  <span class="c">(air density at cylinder pressure)</span><br>
-m<sub>air</sub> = ρ·V = 12.44 × 4.99 = 62.1 kg per launch<br>
-Q<sub>peak</sub> = A·v = 3.56 m³/s · ṁ<sub>peak</sub> = ρ·Q<sub>peak</sub> = 44.3 kg/s · ṁ<sub>avg</sub> = m<sub>air</sub> / t = 22.2 kg/s
-  </div>
-  <div class="where"><span class="wlabel">Symbols in Step 3 — where they first appear</span><ul>
-    <li><span class="sym">V</span> — volume swept by the piston during the launch <span class="units">(m³)</span>. Here V = 4.99 m³.</li>
-    <li><span class="sym">ρ</span> — density of the air at cylinder pressure (Greek rho) <span class="units">(kg/m³)</span>. Here ρ = 12.44 kg/m³ — about ten times denser than room air, because it is squeezed to ~10 atmospheres.</li>
-    <li><span class="sym">R</span> — gas constant for air <span class="units">(J/kg·K)</span>. R = 287 J/kg·K.</li>
-    <li><span class="sym">T</span> — absolute temperature <span class="units">(K, kelvin)</span>. Here T = 300 K.</li>
-    <li><span class="sym">m<sub>air</sub></span> — mass of air used per launch <span class="units">(kg)</span>. Here 62.1 kg.</li>
-    <li><span class="sym">Q</span> — volumetric flow rate at the local density <span class="units">(m³/s)</span>. Peak Q = 3.56 m³/s at top speed.</li>
-    <li><span class="sym">ṁ</span> — mass flow rate (m-dot) <span class="units">(kg/s)</span>. Peak 44.3 kg/s; average 22.2 kg/s.</li>
-  </ul></div>
-  <div class="plain"><span class="plabel">In plain English — Step 3</span><p><strong>How much air does one launch drink?</strong> Picture the cylinder as a tube the size of a large pizza, 49 metres long. Filling that whole tube with air squeezed to ten times normal density takes <strong>62 kilograms of air</strong> — about the weight of an adult person, thrown at the piston in under 3 seconds. At the hungriest moment, near top speed, air is pouring in at 44 kg every second. We size the pipe (Step 5) and the tank (Step 4) for exactly these numbers.</p></div>
-
-  <h3>Step 4 — Receiver sizing (mass balance on the tank)</h3>
-  <p class="deriv"><b>Derivation.</b> A mass balance on the receiver over one launch: the mass that leaves, m<sub>air</sub> from Step 3, must equal the drop in the mass stored, and the stored mass follows the ideal-gas law at each pressure. The tank starts at p<sub>1</sub> = 3.0 MPa abs and is not emptied to zero — the launch ends at p<sub>2</sub> = 1.2 MPa abs, still comfortably above the cylinder's 1.07 MPa abs requirement, so the valves can still meter flow at the end. Only the <em>usable pressure drop</em> (p<sub>1</sub> − p<sub>2</sub>) delivers air, so V<sub>tank</sub> = m<sub>air</sub>·R·T ÷ (p<sub>1</sub> − p<sub>2</sub>). Dividing by p<sub>1</sub> alone — the tempting shortcut — would undersize the tank by 40% (Theory 5).</p>
-  <div class="eq">
-V<sub>tank</sub> = m<sub>air</sub>·R·T / (p₁ − p₂) = 62.1 × 287 × 300 / (3.0 − 1.2) MPa = 2.97 m³  <span class="c">(≈ 3,000 L)</span>
-  </div>
-  <div class="where"><span class="wlabel">Symbols in Step 4 — where they first appear</span><ul>
-    <li><span class="sym">V<sub>tank</sub></span> — receiver (storage tank) volume <span class="units">(m³; also shown in L)</span>. Here ≈ 2.97 m³.</li>
-    <li><span class="sym">p<sub>1</sub></span> — receiver pressure when fully charged <span class="units">(Pa, absolute; shown in MPa)</span>. Here p<sub>1</sub> = 3.0 MPa abs.</li>
-    <li><span class="sym">p<sub>2</sub></span> — receiver pressure at the end of one launch <span class="units">(Pa, absolute; shown in MPa)</span>. Here p<sub>2</sub> = 1.2 MPa abs — deliberately kept above the cylinder's 1.07 MPa abs need.</li>
-  </ul></div>
-  <p>Storage pressure is the designer's main lever on tank size — the same 62 kg of air in a smaller, harder-squeezed tank, or a bigger, gentler one:</p>
-  <div class="tablewrap">
-    <table class="stack-table">
-      <thead><tr><th>Storage pressure p₁</th><th class="num">Receiver volume</th><th>Comment</th></tr></thead>
-      <tbody>
-        <tr><td data-l="Storage pressure">2.0 MPa abs</td><td class="num" data-l="Receiver volume">6.68 m³</td><td data-l="Comment">Big, cheap-pressure tank — a small room of air vessel</td></tr>
-        <tr><td data-l="Storage pressure">2.5 MPa abs</td><td class="num" data-l="Receiver volume">4.11 m³</td><td data-l="Comment">Middle ground</td></tr>
-        <tr class="hl"><td data-l="Storage pressure">3.0 MPa abs — recommended</td><td class="num" data-l="Receiver volume">2.97 m³</td><td data-l="Comment">Compact tank at a standard industrial pressure class</td></tr>
-        <tr><td data-l="Storage pressure">4.0 MPa abs</td><td class="num" data-l="Receiver volume">1.91 m³</td><td data-l="Comment">Smallest tank, but higher-pressure vessels, valves, and compressor all cost more</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="plain"><span class="plabel">In plain English — Step 4</span><p><strong>How big a storage tank do we need?</strong> About <strong>3 cubic metres — roughly 3,000 litres</strong>, like a small hot tub or a big wardrobe. The subtle part: the tank never empties completely. It starts squeezed to 3.0 MPa and the launch stops drawing at 1.2 MPa, because below that the air couldn't push the piston hard enough anymore. So only the <em>difference</em> between those pressures does the delivering — forget that, and you'd buy a tank 40% too small and the launch would run out of breath. Squeeze the storage harder (4.0 MPa) and the tank shrinks to 1.91 m³, but everything rated for that pressure costs more; 3.0 MPa is the sweet spot.</p></div>
-
-  <h3>Step 5 — Supply-line sizing: continuity, Mach, Reynolds, Darcy–Weisbach</h3>
-  <p class="deriv"><b>Derivation.</b> Apply the two balances to the line as a fixed control volume. For a compressible fluid the mass balance is continuity in mass form, ṁ = ρ·v·A: the mass flow from Step 3 is constant along the line, and at the line's representative density (2.0 MPa abs, ρ = 23.2 kg/m³) it fixes the air velocity for any trial diameter. Two checks follow immediately. The Mach number M = v ÷ c, with c = √(γRT) = 347 m/s, tells whether compressibility inside the line itself matters; and the Reynolds number Re = ρ·v·D ÷ μ, with the friction factor f from the Haaland approximation to the Moody chart, feeds the mechanical-energy balance: friction ΔP<sub>f</sub> = f·(L/D)·(ρv²/2) plus minor losses ΔP<sub>minor</sub> = ΣK·(ρv²/2) for the valves, bends, and manifold (ΣK = 6).</p>
-  <div class="eq">
-ṁ = ρ·v·A · M = v / c · Re = ρ·v·D / μ · 1/√f = −1.8·log₁₀[ (ε/D / 3.7)<sup>1.11</sup> + 6.9/Re ]  <span class="c">(Haaland)</span><br>
-ΔP<sub>f</sub> = f · (L/D) · (ρv²/2) · ΔP<sub>minor</sub> = ΣK · (ρv²/2), ΣK = 6 · L = 15 m
-  </div>
-  <div class="where"><span class="wlabel">Symbols in Step 5 — where they first appear</span><ul>
-    <li><span class="sym">ṁ</span> — mass flow rate through the line <span class="units">(kg/s)</span>. Sized at its peak, 44.3 kg/s.</li>
-    <li><span class="sym">v</span> — here, the speed of the air inside the pipe (not the train) <span class="units">(m/s)</span>. Same letter, new meaning — the equation ṁ = ρ·v·A is about the pipe.</li>
-    <li><span class="sym">M</span> — Mach number, air speed ÷ speed of sound <span class="units">(no units, dimensionless)</span>. Keep it low; near 1 the flow chokes.</li>
-    <li><span class="sym">c</span> — speed of sound in the line air <span class="units">(m/s)</span>. Here c = 347 m/s at 300 K.</li>
-    <li><span class="sym">Re</span> — Reynolds number, a unit-free score for smooth (laminar) vs. swirly (turbulent) flow <span class="units">(no units, dimensionless)</span>. Millions here = deeply turbulent.</li>
-    <li><span class="sym">μ</span> — dynamic viscosity of air (Greek mu) <span class="units">(Pa·s)</span>. Here μ = 1.85 × 10⁻⁵ Pa·s.</li>
-    <li><span class="sym">f</span> — Darcy friction factor, how much grip the pipe wall exerts on this flow <span class="units">(no units, dimensionless)</span>. Found here with the Haaland formula; 0.0136 in the recommended line.</li>
-    <li><span class="sym">ε</span> — pipe roughness height (Greek epsilon), the size of tiny bumps inside the wall <span class="units">(m; ≈ 0.045 mm for commercial steel)</span>. It appears as ε/D, roughness relative to pipe size.</li>
-    <li><span class="sym">ΔP<sub>f</sub></span> — pressure lost to friction along the straight pipe <span class="units">(Pa; shown in kPa)</span>. This is the Darcy–Weisbach result.</li>
-    <li><span class="sym">L</span> — length of the supply line <span class="units">(m)</span>. Here L = 15 m; it appears as L/D, how many diameters long the pipe is.</li>
-    <li><span class="sym">ΔP<sub>minor</sub></span> — pressure lost in fittings (valves, bends, manifold) rather than straight pipe <span class="units">(Pa; shown in kPa)</span>.</li>
-    <li><span class="sym">K, ΣK</span> — minor-loss coefficient for one fitting (K) and the sum over all fittings (ΣK; Σ is Greek sigma, “add up”) <span class="units">(no units, dimensionless)</span>. Here ΣK = 6.</li>
-  </ul></div>
-  <p>At the peak mass flow of 44.3 kg/s, the candidate diameters behave very differently — this table is the heart of the design:</p>
-  <div class="tablewrap">
-    <table class="stack-table">
-      <thead><tr><th>Diameter</th><th class="num">v (peak)</th><th class="num">Mach</th><th class="num">Reynolds</th><th class="num">ΔP total</th><th>Verdict</th></tr></thead>
-      <tbody>
-        <tr><td data-l="Diameter">0.10 m</td><td class="num" data-l="Velocity">243 m/s</td><td class="num" data-l="Mach">0.70</td><td class="num" data-l="Reynolds">30.5 × 10⁶</td><td class="num" data-l="ΔP total">5,798 kPa</td><td data-l="Verdict">Unusable — loss exceeds the line pressure itself; flow is approaching choked</td></tr>
-        <tr><td data-l="Diameter">0.15 m</td><td class="num" data-l="Velocity">108 m/s</td><td class="num" data-l="Mach">0.31</td><td class="num" data-l="Reynolds">20.3 × 10⁶</td><td class="num" data-l="ΔP total">1,016 kPa (51% of line P)</td><td data-l="Verdict">Half the driving pressure thrown away — reject</td></tr>
-        <tr><td data-l="Diameter">0.20 m</td><td class="num" data-l="Velocity">60.8 m/s</td><td class="num" data-l="Mach">0.17</td><td class="num" data-l="Reynolds">15.3 × 10⁶</td><td class="num" data-l="ΔP total">303 kPa (15%)</td><td data-l="Verdict">Workable but wasteful</td></tr>
-        <tr class="hl"><td data-l="Diameter">0.25 m — recommended</td><td class="num" data-l="Velocity">38.9 m/s</td><td class="num" data-l="Mach">0.11</td><td class="num" data-l="Reynolds">12.2 × 10⁶</td><td class="num" data-l="ΔP total">120 kPa (6.0%)</td><td data-l="Verdict">ΔP<sub>f</sub> = 14 kPa + ΔP<sub>minor</sub> = 105 kPa, f = 0.0136 — losses small, Mach low</td></tr>
-        <tr><td data-l="Diameter">0.30 m</td><td class="num" data-l="Velocity">27.0 m/s</td><td class="num" data-l="Mach">0.08</td><td class="num" data-l="Reynolds">10.2 × 10⁶</td><td class="num" data-l="ΔP total">56 kPa (2.8%)</td><td data-l="Verdict">Marginal gain over 0.25 m for a much heavier, costlier line</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>Note where the recommended line's loss actually sits: only 14 kPa is wall friction — 105 kPa is <em>minor</em> losses in the valves, bends, and manifold, because at L/D = 60 the line is short and fat. The recommendation is <strong>0.25 m</strong>. Explore it in the demo — the table there is this exact calculation.</p>
-  <div class="plain"><span class="plabel">In plain English — Step 5</span><p><strong>How wide should the pipe be?</strong> Picture blowing through different straws, except the “straw” has to pass 44 kg of air per second. A skinny straw (0.10 m) forces the air to blast through at 243 m/s — 70% of the speed of sound — and the rubbing and squeezing would waste more pressure than the pipe even has: impossible. A medium straw (0.20 m) wastes 15%. The fat straw (0.25 m) lets the air cruise at 39 m/s and wastes just 6% — and here's the surprise: most of that 6% isn't the pipe walls at all, it's the valves and bends the air has to squeeze through. Verdict: <strong>0.25 m wins</strong>. The fancy names are just measuring tools: “Mach number” compares the air's speed to the speed of sound, “Reynolds number” tells us the flow is rough and swirly (turbulent), and “Darcy–Weisbach” turns pipe size, length, and speed into a waste number.</p></div>
-
-  <h3>Step 6 — Compressor, recharge, and expansion cooling</h3>
-  <p class="deriv"><b>Derivation.</b> Recharge is the Step 4 mass balance run in reverse and slowly: the compressor must replace m<sub>air</sub> = 62.1 kg, raising it from atmospheric pressure to 3.0 MPa abs. For a polytropic compression with exponent n, the work per kilogram is [n ÷ (n−1)]·R·T₁·[(p₂/p₁)<sup>(n−1)/n</sup> − 1]. With n = 1.3 that is 442 kJ/kg. The same polytropic relation, run as an expansion, also predicts the launch's side effect: air expanding from the receiver's 3.0 MPa down to the cylinder's 1.07 MPa abs cools from 300 K to 237 K (−36 °C) — stated here honestly as a design limitation, because cold air is denser, seals stiffen, and moisture in the air can freeze in the valves.</p>
-  <div class="eq">
-w = [n/(n−1)]·R·T₁·[(p₂/p₁)<sup>(n−1)/n</sup> − 1] = 442 kJ/kg  <span class="c">(n = 1.3, atmospheric → 3.0 MPa abs)</span><br>
-E<sub>comp</sub> = w · m<sub>air</sub> = 442 × 62.1 = 27.5 MJ per launch<br>
-P<sub>comp</sub> = E<sub>comp</sub> / t<sub>recharge</sub> = 27.5 MJ / 90 s = 305 kW ≈ 409 hp  <span class="c">→ one 500 hp compressor suffices</span><br>
-T<sub>after expansion</sub> = 300 K × (1.07 / 3.0)<sup>(n−1)/n</sup> = 237 K (−36 °C) at n = 1.3 <span class="c">(224 K at n = 1.4 · 253 K at n = 1.2)</span>
-  </div>
-  <div class="where"><span class="wlabel">Symbols in Step 6 — where they first appear</span><ul>
-    <li><span class="sym">n</span> — polytropic exponent, describing how the gas process sits between isothermal (n = 1, slow, heat exchanged) and adiabatic (n = 1.4, fast, no heat exchange) <span class="units">(no units, dimensionless)</span>. Here n = 1.3 for compression.</li>
-    <li><span class="sym">t<sub>recharge</sub></span> — recharge time allowed for the refill <span class="units">(s, seconds)</span>. Here t<sub>recharge</sub> = 90 s.</li>
-    <li><span class="sym">η</span> — efficiency (Greek eta) <span class="units">(no units, a fraction 0–1)</span>. The 305 kW is the ideal polytropic compression power; a 500 hp (373 kW) installed unit leaves margin above it for motor and drive losses.</li>
-  </ul></div>
-  <p>The compression model is bracketed, not cherry-picked: a perfectly slow, fully cooled (isothermal, n = 1) compression would need only 18.1 MJ per launch (201 kW over 90 s) — the theoretical floor — while a perfectly fast, uncooled (adiabatic, n = 1.4) compression would need 30.5 MJ (339 kW). The n = 1.3 design value, 27.5 MJ / 305 kW, sits between them, closer to the adiabatic end because 90 seconds is still fast for heat to escape a multi-stage machine. The headline result of the whole project: <strong>the compressor is modest — the receiver does the work.</strong></p>
-  <div class="plain"><span class="plabel">In plain English — Step 6</span><p><strong>How big a compressor refills the tank — and what's the catch?</strong> Refilling takes 90 seconds — much longer than the 2.8-second launch — so the compressor can take its time. It needs about 305 kW (409 horsepower), and a single compressor the size of a big truck engine (500 hp class) handles it with room to spare. That's the punchline of the whole project: <strong>the compressor is not the hero. The storage tank is.</strong> The catch is cold: when air expands in a hurry, it chills — here to about −36 °C, colder than a home freezer. Real designs have to dry the air and use valves and seals that still work frozen. This project calculates that cooling honestly but doesn't feed it back into the other steps — that's listed as a limitation, not hidden.</p></div>
-
-  <h3 class="theory" id="t-groups"><span class="tnum">Theory 4 ·</span> Dimensionless groups — the numbers the answer actually depends on</h3>
-  <p>Just as the packed-bed example reduces seventeen dimensional inputs to a handful of dimensionless groups, this design collapses to nine. Every result in Steps 1–6 can be read off them: change an input and only the groups it touches move. Values are the design case (D = 0.25 m line) at the sizing point.</p>
-  <div class="tablewrap">
-    <table class="stack-table">
-      <thead><tr><th>Group</th><th>Definition</th><th class="num">Design value</th><th>What it tells you</th></tr></thead>
-      <tbody>
-        <tr><td data-l="Group">Reynolds number, Re</td><td data-l="Definition">ρ·v·D / μ</td><td class="num" data-l="Design value">12.2 × 10⁶</td><td data-l="Meaning">Flow in the line is deeply turbulent, so f depends only weakly on Re — the loss is dominated by geometry, not by the exact flow regime.</td></tr>
-        <tr><td data-l="Group">Mach number, M</td><td data-l="Definition">v / c</td><td class="num" data-l="Design value">0.11</td><td data-l="Meaning">The compressibility check an incompressible-fluid design never needs: at M = 0.11 the constant-density line model is sound; at the 0.10 m line's M = 0.70 it would not be.</td></tr>
-        <tr><td data-l="Group">Friction factor, f</td><td data-l="Definition">Haaland, at Re and ε/D</td><td class="num" data-l="Design value">0.0136</td><td data-l="Meaning">The pipe wall's grip on this flow; read from the Moody chart correlation, not assumed.</td></tr>
-        <tr><td data-l="Group">Relative roughness, ε/D</td><td data-l="Definition">0.045 mm / 0.25 m</td><td class="num" data-l="Design value">1.8 × 10⁻⁴</td><td data-l="Meaning">The wall is nearly smooth at this diameter — which is why f sits close to the smooth-pipe turbulent value, and why roughness matters more in the 0.10 m line (ε/D is 2.5× larger there).</td></tr>
-        <tr><td data-l="Group">Length ratio, L/D</td><td data-l="Definition">15 m / 0.25 m</td><td class="num" data-l="Design value">60</td><td data-l="Meaning">The line is only 60 diameters long — short and fat — which is exactly why minor losses (105 kPa) dwarf straight-pipe friction (14 kPa) here.</td></tr>
-        <tr><td data-l="Group">Minor-loss sum, ΣK</td><td data-l="Definition">Valves + bends + manifold</td><td class="num" data-l="Design value">6</td><td data-l="Meaning">Fittings cost 6 dynamic heads, and at the design point they cost ~7.5× more pressure than the straight pipe: ΔP<sub>minor</sub> = 105 kPa vs. ΔP<sub>f</sub> = 14 kPa.</td></tr>
-        <tr><td data-l="Group">Loss fraction, ΔP<sub>total</sub> / p<sub>line</sub></td><td data-l="Definition">120 kPa / 2.0 MPa</td><td class="num" data-l="Design value">0.060 (6.0%)</td><td data-l="Meaning">The accept/reject criterion for a diameter: the share of the line pressure thrown away before the air reaches the piston. At D = 0.15 m it climbs to 51%; at 0.30 m it falls to 2.8%.</td></tr>
-        <tr><td data-l="Group">Peak-to-average power, P<sub>peak</sub> / P<sub>avg</sub></td><td data-l="Definition">3.46 MW / 1.73 MW</td><td class="num" data-l="Design value">2.00</td><td data-l="Meaning">Even within the launch, power is not flat: the end of the launch demands 2× the average. Peak — not average — sizes the piston, line, and valves. (Against the compressor, the ratio is ~11×.)</td></tr>
-        <tr><td data-l="Group">Receiver pressure ratio, p₁ / p₂</td><td data-l="Definition">3.0 MPa / 1.2 MPa</td><td class="num" data-l="Design value">2.50</td><td data-l="Meaning">How much of the stored pressure is usable in one launch. It sets both the tank volume (Step 4) and, through the expansion ratio, the cooling in Step 6.</td></tr>
-        <tr><td data-l="Group">Polytropic exponent, n</td><td data-l="Definition">p·V<sup>n</sup> = const along the process</td><td class="num" data-l="Design value">1.3 (compression)</td><td data-l="Meaning">Where the real process sits between isothermal (n = 1, slow) and adiabatic (n = 1.4, instant). Bracketed in Theory 5.</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="plain"><span class="plabel">In plain English</span><p>Engineers boil a messy machine down to a few “score numbers.” The three that run this project: the <strong>loss fraction</strong> — what share of the pressure is wasted in the pipe (6% with the chosen pipe: good; 51% with the 0.15 m pipe: hopeless) — the <strong>Mach number</strong> (0.11: the air is loafing along far below the speed of sound, so the simple math holds), and the <strong>peak-to-average ratio</strong> (2.00 within the launch, ~11× against the compressor), which is why everything is sized for the worst moment, not the average one.</p></div>
-
-  <h3 class="theory" id="t-levels"><span class="tnum">Theory 5 ·</span> Two levels of model: what the shortcuts cost</h3>
-  <p>The reference example runs a simple 1D model alongside its full 2D model and explains why they differ. This project has the same structure — key steps have a shortcut version and a fuller version, and the gaps are instructive rather than embarrassing:</p>
-  <div class="tablewrap">
-    <table class="stack-table">
-      <thead><tr><th>Question</th><th>Shortcut model</th><th>Fuller model (used here)</th><th>Why they differ</th></tr></thead>
-      <tbody>
-        <tr><td data-l="Question">Receiver size</td><td data-l="Shortcut">m·R·T ÷ p₁ gives 1.78 m³</td><td data-l="Fuller">Mass balance over the usable drop (p₁ − p₂) gives 2.97 m³</td><td data-l="Why">The shortcut pretends the tank can be emptied to vacuum. In reality the launch stops at 1.2 MPa abs — the air still in the tank at that pressure is dead weight the shortcut forgets — so the shortcut undersizes the tank by about 40%.</td></tr>
-        <tr><td data-l="Question">Line pressure loss</td><td data-l="Shortcut">Friction only: 14 kPa at D = 0.25 m (203 kPa at 0.15 m)</td><td data-l="Fuller">Friction + minor losses: 120 kPa at 0.25 m (1,016 kPa at 0.15 m)</td><td data-l="Why">Valves, bends, and the manifold cost dynamic heads on top of wall friction — in this short, fat line they cost ~7.5× the friction. A friction-only model would call the 0.15 m line acceptable; the full model shows it throws away half the line pressure.</td></tr>
-        <tr><td data-l="Question">Compression work</td><td data-l="Shortcut">Isothermal bound: 18.1 MJ per launch (201 kW)</td><td data-l="Fuller">Polytropic n = 1.3: 27.5 MJ (305 kW); adiabatic n = 1.4: 30.5 MJ (339 kW)</td><td data-l="Why">Isothermal compression assumes the heat of compression escapes completely — true only for infinitely slow compression. The polytropic value prices in that a 90 s recharge is fast, and the two bounds bracket whatever a real multi-stage machine achieves.</td></tr>
-        <tr><td data-l="Question">Peak power</td><td data-l="Shortcut">Constant thrust: 3.46 MW mechanical peak</td><td data-l="Fuller">Real thrust varies as receiver pressure falls from 3.0 toward 1.2 MPa, so installed capacity must exceed the constant-thrust picture</td><td data-l="Why">The constant-thrust model is a transparent lower bound — honest for sizing, as long as the margin is discussed, which Section 4 does against the real rides' accelerations.</td></tr>
+        <tr><td class="sym" data-l="Symbol">n</td><td data-l="Meaning">Polytropic exponent — a dial describing how a gas process behaves between two ideals: the isothermal limit (slow, with time to exchange heat) and the adiabatic limit γ (very fast, no heat exchange). The design value sits between those limits and is used for both compression work and expansion cooling.</td><td class="units" data-l="Units">No units (dimensionless)</td></tr>
+        <tr><td class="sym" data-l="Symbol">w</td><td data-l="Meaning">Compression work per kilogram of air — the energy the compressor must supply for each kilogram it squeezes from atmospheric pressure up to receiver pressure. Total energy per launch is E<sub>comp</sub> = w · m<sub>air</sub>.</td><td class="units" data-l="Units">J/kg; shown in kJ/kg</td></tr>
+        <tr><td class="sym" data-l="Symbol">η</td><td data-l="Meaning">Efficiency (Greek letter eta) — the share of energy that survives a step instead of being lost as heat and friction. A perfect machine would score the maximum; real machines score lower. It is the link between the ideal compression power and the installed motor size, which is chosen a class above the ideal power to cover drive and motor losses.</td><td class="units" data-l="Units">No units (a fraction)</td></tr>
+        <tr><td class="sym" data-l="Symbol">t<sub>recharge</sub></td><td data-l="Meaning">Recharge time — how long the compressor takes to replace the air used and re-pressurise the receiver between launches. A longer, lazier refill is why the compressor can be so much smaller than the launch power.</td><td class="units" data-l="Units">s (seconds)</td></tr>
       </tbody>
     </table>
   </div>
 
-  <h3 class="theory" id="t-method"><span class="tnum">Theory 6 ·</span> How the page solves it</h3>
-  <p>There is no differential equation to integrate here — the model is algebraic — but it is still solved in a strict sequence, the same sequence the demo code runs on every slider input, and the order matters because each step consumes the previous step's output:</p>
-  <div class="card">
-    <ul>
-      <li><strong>1.</strong> From (m, v, t): a, s, F, F<sub>d</sub>, KE, W, and the mechanical powers (Step 1).</li>
-      <li><strong>2.</strong> From F<sub>d</sub> and piston D: A = πD²/4 and the required cylinder pressure p = F<sub>d</sub>/A, gauge then absolute (Step 2).</li>
-      <li><strong>3.</strong> ρ = p ÷ (R·T) at cylinder pressure; m<sub>air</sub> = ρ·A·s; ṁ<sub>peak</sub> = ρ·A·v (Step 3).</li>
-      <li><strong>4.</strong> V<sub>tank</sub> = m<sub>air</sub>·R·T ÷ (p₁ − p₂) (Step 4).</li>
-      <li><strong>5.</strong> From ṁ<sub>peak</sub> and line D: v = ṁ ÷ (ρ<sub>line</sub>·A), M = v/c, Re = ρvD/μ, then f from the Haaland formula. Haaland is <em>explicit</em> — unlike the Colebrook equation it needs no iteration, which is what makes the live demo instant.</li>
-      <li><strong>6.</strong> ΔP<sub>f</sub> and ΔP<sub>minor</sub> from Darcy–Weisbach and ΣK (Step 5); the verdict compares their sum with line pressure.</li>
-      <li><strong>7.</strong> Polytropic compression work per kilogram × m<sub>air</sub>, divided by t<sub>recharge</sub> for compressor power; the expansion-cooling estimate from the same polytropic relation (Step 6).</li>
-    </ul>
-  </div>
-  <p style="margin-top:12px">The one numerical compromise is <strong>quasi-steady evaluation</strong>: instead of time-stepping pressure, flow, and acceleration through the 2.8 s, the model evaluates the balances at snapshots — and sizes everything at the worst snapshot (Theory 7). That is the analogue of the reference example's solver choice: a deliberate trade of transient detail for a transparent, checkable calculation, with the limitation stated rather than hidden.</p>
-
-  <h3 class="theory" id="t-sizing"><span class="tnum">Theory 7 ·</span> Locating the sizing point</h3>
-  <p>The reference example has to <em>locate</em> its hot spot, because the peak temperature almost never sits where you first look. This design has the same trap, in time rather than in space. Two effects stack at the <strong>end</strong> of the launch: the piston's volumetric demand A·v is at its maximum because v is at its maximum, and the receiver pressure is at its minimum because the tank has given up its air. Mass flow demand ṁ = ρ·A·v therefore peaks at the final moment — so the line, valves, and piston are all sized at peak mass flow, 44.3 kg/s, not at the 22.2 kg/s average; sizing at the average would halve the design flow and the line loss calculation would be optimistic by roughly a factor of four (losses scale with ṁ²). The end of the launch is also where the pressure budget is tightest: the receiver finishes at 1.2 MPa abs against a cylinder requirement of 1.07 MPa abs, leaving only ~0.13 MPa of margin to cover the regulator and the last of the line loss — one more reason the 120 kPa total loss of the recommended line, rather than the 1,016 kPa of the 0.15 m line, is a requirement and not a luxury. Every sizing number on this page is evaluated at that located worst point, exactly as a hot-spot temperature is evaluated at its located maximum rather than at a convenient average position.</p>
-
-  <h3 class="theory" id="t-sensitivity"><span class="tnum">Theory 8 ·</span> Parametric sensitivity</h3>
-  <p>The normalised sensitivity of an output y to an input φ is s(y; φ) = (φ ÷ y) · (∂y ÷ ∂φ) = ∂ ln y ÷ ∂ ln φ — the percentage change in y per 1% change in φ. It is dimensionless, so sensitivities to kilograms, metres, and seconds can be compared on one table. The values below are computed from this page's own model by central differences (±1% perturbations — the finite-difference method, chosen here because the model is algebraic and cheap, unlike the stiff solver in the reference example where finite differences are fragile), or exactly where the algebra allows:</p>
-  <div class="tablewrap">
-    <table class="stack-table">
-      <thead><tr><th>Sensitivity</th><th class="num">Value</th><th>Reading</th></tr></thead>
-      <tbody>
-        <tr><td data-l="Sensitivity">s(KE; v) — energy vs. target speed</td><td class="num" data-l="Value">+2.00</td><td data-l="Reading">Exact: KE ∝ v². Speed is the most expensive thing to ask for.</td></tr>
-        <tr><td data-l="Sensitivity">s(KE; m) — energy vs. train mass</td><td class="num" data-l="Value">+1.00</td><td data-l="Reading">Exact: KE ∝ m. Mass costs linearly, speed quadratically.</td></tr>
-        <tr><td data-l="Sensitivity">s(m<sub>air</sub>; p<sub>cyl</sub>) — air per launch vs. cylinder pressure</td><td class="num" data-l="Value">+1.00</td><td data-l="Reading">Exact through the ideal-gas law: m<sub>air</sub> ∝ ρ ∝ p at fixed T. Squeeze the cylinder air 1% harder and the launch drinks 1% more air.</td></tr>
-        <tr><td data-l="Sensitivity">s(P<sub>peak,mech</sub>; t)</td><td class="num" data-l="Value">−0.95</td><td data-l="Reading">A 1% longer launch buys ~1% less peak power — but does nothing for total energy.</td></tr>
-        <tr><td data-l="Sensitivity">s(V<sub>tank</sub>; p₁) — tank volume vs. storage pressure</td><td class="num" data-l="Value">−1.67</td><td data-l="Reading">Exact: V ∝ 1/(p₁ − p₂), so s = −p₁/(p₁ − p₂) = −3.0/1.8. Storage pressure is a strong lever on tank size — the Step 4 tradeoff table is this sensitivity in action.</td></tr>
-        <tr class="hl"><td data-l="Sensitivity">s(ΔP<sub>total</sub>; D) — line loss vs. diameter</td><td class="num" data-l="Value">−4.14</td><td data-l="Reading"><strong>The headline sensitivity of the project.</strong> Between the D⁻⁴ minor-loss law and the D⁻⁵ friction law; closer to −4 because minor losses dominate this short line and f shifts slightly with Re. A 1% larger pipe cuts total line loss by ≈ 4.1%.</td></tr>
-        <tr><td data-l="Sensitivity">s(ΔP<sub>total</sub>; ṁ)</td><td class="num" data-l="Value">≈ +2</td><td data-l="Reading">Losses grow with the square of mass flow (both terms carry ρv²/2 with v ∝ ṁ): asking for more speed punishes an undersized line twice over.</td></tr>
-        <tr><td data-l="Sensitivity">s(P<sub>comp</sub>; t<sub>recharge</sub>)</td><td class="num" data-l="Value">−1.00</td><td data-l="Reading">Exact inverse: double the allowed recharge time, halve the compressor.</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>Check it in the demo: raise the diameter 10% (0.25 → 0.275 m) and the total line loss should fall by about a third (1.1<sup>−4.14</sup> ≈ 0.67) — the sensitivity table and the sliders are the same model, so they must agree.</p>
-  <div class="plain"><span class="plabel">In plain English</span><p>“Sensitivity” just asks: <em>if I nudge this one knob by 1%, how much does the answer move?</em> The winner by a mile is pipe diameter: nudge it up 1% and the wasted pressure drops about 4.1%. Storage pressure is the strongest tank knob (1% more pressure, 1.7% smaller tank). Speed is the greediest knob — 1% more speed costs 2% more energy. And recharge time is a perfect trade: wait twice as long between launches, need half the compressor.</p></div>
-  <div class="card" style="margin-top:14px">
-    <h3>Sensitivity checks worth running in the demo</h3>
-    <ul>
-      <li>Train mass ±20% — thrust, cylinder pressure, and air per launch all scale ~linearly (s ≈ +1, per the table).</li>
-      <li>Launch time 2.5 s vs. 3.0 s — peak power moves much faster than average power.</li>
-      <li>Undersizing the line to 0.15 m — watch the loss fraction climb from 6% to ~51% of line pressure, and Mach reach 0.31.</li>
-      <li>Piston diameter: a bigger piston trades lower cylinder pressure for more air per launch — watch the receiver volume grow.</li>
-    </ul>
-  </div>
-
-  <h3 class="theory" id="t-worked"><span class="tnum">Theory 9 ·</span> Worked example: the design case, end to end</h3>
-  <p>The step-by-step trace below is the reference example's “breakdown” format applied to this model: every intermediate value, in the order Theory 6 computes it, at the default inputs. It is also exactly what the demo displays — two presentations of one calculation.</p>
-  <div class="tablewrap">
-    <table class="stack-table">
-      <thead><tr><th>Step</th><th>Quantity</th><th>Substitution (design case)</th><th class="num">Result</th></tr></thead>
-      <tbody>
-        <tr><td data-l="Step">1</td><td data-l="Quantity">Acceleration a</td><td data-l="Substitution">35 ÷ 2.8</td><td class="num" data-l="Result">12.5 m/s² (1.27 g)</td></tr>
-        <tr><td data-l="Step">1</td><td data-l="Quantity">Launch distance s</td><td data-l="Substitution">½ × 12.5 × 2.8²</td><td class="num" data-l="Result">49 m</td></tr>
-        <tr><td data-l="Step">1</td><td data-l="Quantity">Thrust F</td><td data-l="Substitution">7,500 × 12.5</td><td class="num" data-l="Result">93.8 kN</td></tr>
-        <tr><td data-l="Step">1</td><td data-l="Quantity">Design thrust F<sub>d</sub></td><td data-l="Substitution">93.8 + 5 (drag)</td><td class="num" data-l="Result">98.8 kN</td></tr>
-        <tr><td data-l="Step">1</td><td data-l="Quantity">Kinetic energy KE</td><td data-l="Substitution">½ × 7,500 × 35²</td><td class="num" data-l="Result">4.59 MJ</td></tr>
-        <tr><td data-l="Step">1</td><td data-l="Quantity">Work W · peak / average power</td><td data-l="Substitution">98.8 kN × 49 m · 98.8 kN × 35 m/s · W ÷ 2.8 s</td><td class="num" data-l="Result">4.84 MJ · 3.46 MW · 1.73 MW</td></tr>
-        <tr><td data-l="Step">2</td><td data-l="Quantity">Piston area A</td><td data-l="Substitution">π × 0.36² ÷ 4</td><td class="num" data-l="Result">0.1018 m²</td></tr>
-        <tr><td data-l="Step">2</td><td data-l="Quantity">Cylinder pressure p</td><td data-l="Substitution">98.8 kN ÷ 0.1018 m²</td><td class="num" data-l="Result">0.970 MPa gauge (1.07 MPa abs)</td></tr>
-        <tr><td data-l="Step">3</td><td data-l="Quantity">Swept volume V</td><td data-l="Substitution">0.1018 × 49</td><td class="num" data-l="Result">4.99 m³</td></tr>
-        <tr><td data-l="Step">3</td><td data-l="Quantity">Air density ρ at cylinder p</td><td data-l="Substitution">1.07 × 10⁶ ÷ (287 × 300)</td><td class="num" data-l="Result">12.44 kg/m³</td></tr>
-        <tr><td data-l="Step">3</td><td data-l="Quantity">Air per launch m<sub>air</sub></td><td data-l="Substitution">12.44 × 4.99</td><td class="num" data-l="Result">62.1 kg</td></tr>
-        <tr><td data-l="Step">3</td><td data-l="Quantity">Peak / average mass flow</td><td data-l="Substitution">12.44 × 0.1018 × 35 · 62.1 ÷ 2.8</td><td class="num" data-l="Result">44.3 / 22.2 kg/s</td></tr>
-        <tr><td data-l="Step">4</td><td data-l="Quantity">Receiver volume V<sub>tank</sub></td><td data-l="Substitution">62.1 × 287 × 300 ÷ (3.0 − 1.2) × 10⁶</td><td class="num" data-l="Result">2.97 m³ (≈ 3,000 L)</td></tr>
-        <tr><td data-l="Step">5</td><td data-l="Quantity">Line velocity v (D = 0.25 m)</td><td data-l="Substitution">44.3 ÷ (23.2 × π × 0.25² ÷ 4)</td><td class="num" data-l="Result">38.9 m/s</td></tr>
-        <tr><td data-l="Step">5</td><td data-l="Quantity">Mach M · Reynolds Re</td><td data-l="Substitution">38.9 ÷ 347 · 23.2 × 38.9 × 0.25 ÷ 1.85 × 10⁻⁵</td><td class="num" data-l="Result">0.11 · 12.2 × 10⁶ (turbulent)</td></tr>
-        <tr><td data-l="Step">5</td><td data-l="Quantity">Friction factor f</td><td data-l="Substitution">Haaland at Re = 12.2 × 10⁶, ε/D = 1.8 × 10⁻⁴</td><td class="num" data-l="Result">0.0136</td></tr>
-        <tr><td data-l="Step">5</td><td data-l="Quantity">Total line loss ΔP<sub>total</sub></td><td data-l="Substitution">14 (friction) + 105 (minor)</td><td class="num" data-l="Result">120 kPa = 6.0% of 2.0 MPa</td></tr>
-        <tr><td data-l="Step">6</td><td data-l="Quantity">Compression work</td><td data-l="Substitution">442 kJ/kg × 62.1 kg</td><td class="num" data-l="Result">27.5 MJ per launch</td></tr>
-        <tr><td data-l="Step">6</td><td data-l="Quantity">Compressor power</td><td data-l="Substitution">27.5 MJ ÷ 90 s</td><td class="num" data-l="Result">305 kW ≈ 409 hp</td></tr>
-        <tr><td data-l="Step">6</td><td data-l="Quantity">Expansion cooling</td><td data-l="Substitution">300 K × (1.07 ÷ 3.0)<sup>0.3/1.3</sup></td><td class="num" data-l="Result">237 K (−36 °C)</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <h3 class="theory" id="t-notes"><span class="tnum">Notes ·</span> Model levels, method, sizing point</h3>
+  <ul>
+    <li><strong>Two levels of model — what the shortcuts cost:</strong> sizing the receiver on p<sub>1</sub> alone instead of the usable drop (p<sub>1</sub> − p<sub>2</sub>) understates the tank; a friction-only line loss understates ΔP because minor losses dominate this short line; isothermal compression understates the recharge energy against the polytropic model. Each shortcut's numeric cost is quantified in the worked example below.</li>
+    <li><strong>How the page solves it:</strong> the model is algebraic — no ODE to integrate. The demo runs Steps 1–6 in order, each step consuming the previous output; Haaland is explicit (unlike Colebrook it needs no iteration), and the balances are evaluated quasi-steadily, at the worst snapshot.</li>
+    <li><strong>Locating the sizing point:</strong> everything is sized at the <em>end</em> of the launch, where ṁ peaks just as receiver pressure bottoms out at p<sub>2</sub>, leaving only the margin (p<sub>2</sub> − p<sub>abs</sub>) above the cylinder's need. Sizing at ṁ<sub>avg</sub> would understate line losses several-fold, since losses scale with ṁ².</li>
+  </ul>
 
   <h3 style="margin-top:26px">Using this page</h3>
   <div class="card">
     <ul>
-      <li><strong>Demo (Section 1)</strong> — the “app”: change any input and the whole Theory 6 sequence recomputes; the diameter table and chart are Step 5 evaluated across D.</li>
-      <li><strong>Theory (this section)</strong> — the derivation: picture, model, governing equations, groups, model levels, method, sizing point, sensitivity.</li>
-      <li><strong>Worked example (Theory 9)</strong> — the step-by-step trace of the design case; use it to hand-check any single number on the page.</li>
-      <li><strong>Sensitivity (Theory 8)</strong> — predict the effect of a slider change before making it, then verify: the table and the demo are one model, so they must agree.</li>
+      <li><strong>Demo (Section 1)</strong> — change any input and Steps 1–6 recompute; the diameter table and chart are Step 5 evaluated across D.</li>
+      <li><strong>Theory (this section)</strong> — the six textbook walkthrough steps in symbols, the nomenclature, the model notes, and the worked example where the numbers land.</li>
+      <li><strong>Worked example</strong> — use it to hand-check any single number on the page: each substitution starts from the symbolic result of its step.</li>
+      <li><strong>Sensitivity</strong> — predict the effect of a slider change before making it, then verify in the demo.</li>
     </ul>
   </div>
+
+  <h3 id="t-worked" style="margin-top:34px">Plug in the numbers — worked example</h3>
+  <p>This subsection is the <strong>only place in Section 3 where numbers appear</strong>. It takes each symbolic result from Steps 1–6, substitutes the design-case values, and gives every final number — followed by the numeric tables (receiver tradeoff, supply-line diameters, dimensionless groups, sensitivity) and the cost of the shortcuts named in the notes. Design-case inputs: train mass m = 7,500 kg; target speed v = 35 m/s; launch time t = 2.8 s; drag allowance F<sub>drag</sub> = 5 kN; piston diameter D = 0.36 m; air at T = 300 K with R = 287 J/kg·K; receiver charged at p<sub>1</sub> = 3.0 MPa abs, ending at p<sub>2</sub> = 1.2 MPa abs; supply line L = 15 m at ≈ 2.0 MPa abs line pressure (ρ<sub>line</sub> = 23.2 kg/m³, μ = 1.85 × 10⁻⁵ Pa·s, speed of sound c = 347 m/s, ΣK = 6); compression polytropic with n = 1.3; recharge time t<sub>recharge</sub> = 90 s.</p>
+
+  <div class="calcblock">
+    <h4>Step 1 — Train dynamics, with numbers</h4>
+    <div class="eq">a = v / t = 35 / 2.8 = 12.5 m/s² &nbsp;(12.5 / 9.81 = 1.27 g)<br>
+s = v·t / 2 = 35 × 2.8 / 2 = 49 m<br>
+F = m·a = 7,500 × 12.5 = 93.8 kN<br>
+F<sub>d</sub> = F + F<sub>drag</sub> = 93.8 + 5 = 98.8 kN<br>
+KE = ½·m·v² = ½ × 7,500 × 35² = 4.59 MJ<br>
+W = F<sub>d</sub>·s = 98.8 kN × 49 m = 4.84 MJ<br>
+P<sub>peak</sub> = F<sub>d</sub>·v = 98.8 kN × 35 m/s = 3.46 MW &nbsp;·&nbsp; P<sub>avg</sub> = W / t = 4.84 MJ / 2.8 s = 1.73 MW</div>
+    <p class="boxed">Result: a = 12.5 m/s² (1.27 g) · s = 49 m · F = 93.8 kN · F<sub>d</sub> = 98.8 kN · KE = 4.59 MJ · work 4.84 MJ · peak power 3.46 MW · average 1.73 MW</p>
+  </div>
+
+  <div class="calcblock">
+    <h4>Step 2 — Piston, with numbers</h4>
+    <div class="eq">A = π·D²/4 = π × 0.36² / 4 = 0.1018 m²<br>
+p<sub>gauge</sub> = F<sub>d</sub> / A = 98.8 kN / 0.1018 m² = 0.97 MPa gauge<br>
+p<sub>abs</sub> = p<sub>gauge</sub> + p<sub>atm</sub> = 0.97 + 0.10 = 1.07 MPa abs</div>
+    <p class="boxed">Result: D = 0.36 m · A = 0.1018 m² · p = 0.97 MPa gauge (1.07 MPa abs)</p>
+  </div>
+
+  <div class="calcblock">
+    <h4>Step 3 — Air per launch, with numbers</h4>
+    <div class="eq">V = A·s = 0.1018 × 49 = 4.99 m³<br>
+ρ = p<sub>abs</sub> / (R·T) = 1.07 × 10⁶ / (287 × 300) = 12.44 kg/m³<br>
+m<sub>air</sub> = ρ·V = 12.44 × 4.99 = 62.1 kg<br>
+Q<sub>peak</sub> = A·v = 0.1018 × 35 = 3.56 m³/s<br>
+ṁ<sub>peak</sub> = ρ·Q<sub>peak</sub> = 12.44 × 3.56 = 44.3 kg/s &nbsp;·&nbsp; ṁ<sub>avg</sub> = m<sub>air</sub> / t = 62.1 / 2.8 = 22.2 kg/s</div>
+    <p class="boxed">Result: V = 4.99 m³ · ρ = 12.44 kg/m³ · m<sub>air</sub> = 62.1 kg · peak flow 3.56 m³/s / 44.3 kg/s · average 22.2 kg/s</p>
+  </div>
+
+  <div class="calcblock">
+    <h4>Step 4 — Receiver, with numbers</h4>
+    <div class="eq">V<sub>tank</sub> = m<sub>air</sub>·R·T / (p<sub>1</sub> − p<sub>2</sub>) = 62.1 × 287 × 300 / [(3.0 − 1.2) × 10⁶] = 2.97 m³</div>
+    <p class="boxed">Result: V<sub>tank</sub> = 2.97 m³ (≈ 3,000 L) at p<sub>1</sub> = 3.0 MPa abs, p<sub>2</sub> = 1.2 MPa abs</p>
+    <h4>Receiver tradeoff — storage pressure vs. tank volume</h4>
+    <p>The Step 4 result evaluated across storage pressures (p<sub>2</sub> = 1.2 MPa abs throughout):</p>
+    <div class="tablewrap">
+      <table class="stack-table">
+        <thead><tr><th>Storage pressure p₁</th><th class="num">Receiver volume</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td data-l="Storage pressure">2.0 MPa abs</td><td class="num" data-l="Receiver volume">6.68 m³</td><td data-l="Note">Big tank, cheap pressure class</td></tr>
+          <tr><td data-l="Storage pressure">2.5 MPa abs</td><td class="num" data-l="Receiver volume">4.11 m³</td><td data-l="Note">Middle ground</td></tr>
+          <tr class="hl"><td data-l="Storage pressure">3.0 MPa abs — design case</td><td class="num" data-l="Receiver volume">2.97 m³</td><td data-l="Note">Compact, standard industrial pressure class</td></tr>
+          <tr><td data-l="Storage pressure">4.0 MPa abs</td><td class="num" data-l="Receiver volume">1.91 m³</td><td data-l="Note">Smallest tank; pricier vessels, valves, compressor</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pe"><b>Plain English:</b> Squeeze the stored air harder and the tank shrinks — at 3.0 MPa abs, ≈ 3,000 L of tank hands over the 62 kg per launch, because only the drop from 3.0 to 1.2 MPa does the delivering.</p>
+  </div>
+
+  <div class="calcblock">
+    <h4>Step 5 — Supply line, with numbers (recommended diameter, D = 0.25 m)</h4>
+    <div class="eq">A<sub>line</sub> = π·D²/4 = π × 0.25² / 4 = 0.0491 m²<br>
+v = ṁ<sub>peak</sub> / (ρ<sub>line</sub>·A<sub>line</sub>) = 44.3 / (23.2 × 0.0491) = 38.9 m/s<br>
+M = v / c = 38.9 / 347 = 0.11<br>
+Re = ρ<sub>line</sub>·v·D / μ = 23.2 × 38.9 × 0.25 / (1.85 × 10⁻⁵) = 12.2 × 10⁶ &nbsp;→&nbsp; f = 0.0136 (Haaland)<br>
+ΔP<sub>f</sub> = f·(L/D)·(ρv²/2) = 14 kPa &nbsp;·&nbsp; ΔP<sub>minor</sub> = ΣK·(ρv²/2) = 6 × (ρv²/2) = 105 kPa<br>
+ΔP<sub>total</sub> = 14 + 105 = 120 kPa &nbsp;→&nbsp; 120 kPa / 2.0 MPa = 6.0% of line pressure</div>
+    <p class="boxed">Result: D = 0.25 m — RECOMMENDED · v = 38.9 m/s · Mach 0.11 · Re 12.2 × 10⁶ · f = 0.0136 · ΔP = 120 kPa (14 friction + 105 minor) = 6.0%</p>
+    <h4>Supply-line tradeoff — diameter vs. pressure loss</h4>
+    <p>The Step 5 result evaluated across diameters, all rows at ṁ<sub>peak</sub> = 44.3 kg/s:</p>
+    <div class="tablewrap">
+      <table class="stack-table">
+        <thead><tr><th>Diameter</th><th class="num">v (peak)</th><th class="num">Mach</th><th class="num">Reynolds</th><th class="num">ΔP total</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td data-l="Diameter">0.10 m</td><td class="num" data-l="Velocity">243 m/s</td><td class="num" data-l="Mach">0.70</td><td class="num" data-l="Reynolds">30.5 × 10⁶</td><td class="num" data-l="ΔP total">5,798 kPa</td><td data-l="Verdict">Unusable — loss exceeds the line pressure itself</td></tr>
+          <tr><td data-l="Diameter">0.15 m</td><td class="num" data-l="Velocity">108 m/s</td><td class="num" data-l="Mach">0.31</td><td class="num" data-l="Reynolds">20.3 × 10⁶</td><td class="num" data-l="ΔP total">1,016 kPa</td><td data-l="Verdict">Reject — 51% of line pressure thrown away</td></tr>
+          <tr><td data-l="Diameter">0.20 m</td><td class="num" data-l="Velocity">60.8 m/s</td><td class="num" data-l="Mach">0.17</td><td class="num" data-l="Reynolds">15.3 × 10⁶</td><td class="num" data-l="ΔP total">303 kPa</td><td data-l="Verdict">Workable but wasteful (15%)</td></tr>
+          <tr class="hl"><td data-l="Diameter">0.25 m — recommended</td><td class="num" data-l="Velocity">38.9 m/s</td><td class="num" data-l="Mach">0.11</td><td class="num" data-l="Reynolds">12.2 × 10⁶</td><td class="num" data-l="ΔP total">120 kPa</td><td data-l="Verdict">6.0% of line pressure — friction 14 kPa + minor 105 kPa, f = 0.0136</td></tr>
+          <tr><td data-l="Diameter">0.30 m</td><td class="num" data-l="Velocity">27.0 m/s</td><td class="num" data-l="Mach">0.08</td><td class="num" data-l="Reynolds">10.2 × 10⁶</td><td class="num" data-l="ΔP total">56 kPa</td><td data-l="Verdict">Marginal gain (2.8%) for a heavier, costlier line</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pe"><b>Plain English:</b> In the recommended 0.25 m line the air cruises at 38.9 m/s and loses just 120 kPa — 6.0% of its pressure — and most of that (105 of 120 kPa) is the valves and bends, not the pipe wall.</p>
+    <h4>Dimensionless groups at the design point (D = 0.25 m)</h4>
+    <div class="tablewrap">
+      <table class="stack-table">
+        <thead><tr><th>Group</th><th>Definition</th><th class="num">Value</th><th>Reading</th></tr></thead>
+        <tbody>
+          <tr><td data-l="Group">Reynolds number, Re</td><td data-l="Definition">ρ·v·D / μ</td><td class="num" data-l="Value">12.2 × 10⁶</td><td data-l="Reading">Deeply turbulent — f barely depends on Re</td></tr>
+          <tr><td data-l="Group">Mach number, M</td><td data-l="Definition">v / c</td><td class="num" data-l="Value">0.11</td><td data-l="Reading">Constant-density line model is sound (at 0.10 m, M = 0.70 — it would not be)</td></tr>
+          <tr><td data-l="Group">Friction factor, f</td><td data-l="Definition">Haaland at Re, ε/D</td><td class="num" data-l="Value">0.0136</td><td data-l="Reading">From the Moody-chart correlation, not assumed</td></tr>
+          <tr><td data-l="Group">Relative roughness, ε/D</td><td data-l="Definition">0.045 mm / 0.25 m</td><td class="num" data-l="Value">1.8 × 10⁻⁴</td><td data-l="Reading">Nearly smooth wall at this diameter</td></tr>
+          <tr><td data-l="Group">Length ratio, L/D</td><td data-l="Definition">15 m / 0.25 m</td><td class="num" data-l="Value">60</td><td data-l="Reading">Short, fat line — why minor losses beat friction</td></tr>
+          <tr><td data-l="Group">Minor-loss sum, ΣK</td><td data-l="Definition">Valves + bends + manifold</td><td class="num" data-l="Value">6</td><td data-l="Reading">Costs 105 kPa vs. 14 kPa of wall friction</td></tr>
+          <tr><td data-l="Group">Loss fraction, ΔP / p<sub>line</sub></td><td data-l="Definition">120 kPa / 2.0 MPa</td><td class="num" data-l="Value">0.060 (6.0%)</td><td data-l="Reading">The accept/reject test for a diameter</td></tr>
+          <tr><td data-l="Group">Peak / average power</td><td data-l="Definition">3.46 MW / 1.73 MW</td><td class="num" data-l="Value">2.00</td><td data-l="Reading">Size at the peak, not the average</td></tr>
+          <tr><td data-l="Group">Receiver pressure ratio, p₁ / p₂</td><td data-l="Definition">3.0 MPa / 1.2 MPa</td><td class="num" data-l="Value">2.50</td><td data-l="Reading">Sets tank volume (Step 4) and cooling (Step 6)</td></tr>
+          <tr><td data-l="Group">Polytropic exponent, n</td><td data-l="Definition">p·V<sup>n</sup> = const</td><td class="num" data-l="Value">1.3</td><td data-l="Reading">Between isothermal (1) and adiabatic (1.4)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="calcblock">
+    <h4>Step 6 — Compressor, recharge, expansion cooling, with numbers</h4>
+    <div class="eq">w = [n/(n−1)]·R·T<sub>1</sub>·[(p<sub>1</sub>/p<sub>atm</sub>)<sup>(n−1)/n</sup> − 1], &nbsp;n = 1.3 &nbsp;→&nbsp; w = 442 kJ/kg<br>
+E<sub>comp</sub> = w · m<sub>air</sub> = 442 × 62.1 = 27.5 MJ per launch<br>
+P<sub>comp</sub> = E<sub>comp</sub> / t<sub>recharge</sub> = 27.5 MJ / 90 s = 305 kW (409 hp)<br>
+Bounds: isothermal (n → 1): 18.1 MJ / 201 kW &nbsp;·&nbsp; adiabatic (n = γ): 30.5 MJ / 339 kW<br>
+T<sub>2</sub> = T<sub>1</sub>·(p<sub>abs</sub>/p<sub>1</sub>)<sup>(n−1)/n</sup> = 300 × (1.07 / 3.0)<sup>0.3/1.3</sup> = 237 K (−36 °C), at n = 1.3</div>
+    <p class="boxed">Result: 27.5 MJ per launch · 305 kW compressor for a 90 s recharge (409 hp) · expansion cooling 300 K → 237 K (−36 °C)</p>
+    <h4>Parametric sensitivity at the design point</h4>
+    <p>Normalised sensitivity s(y; φ) = ∂ ln y / ∂ ln φ — the % change in y per 1% change in φ (exact from the algebra, or by ±1% central differences in the page's model).</p>
+    <div class="tablewrap">
+      <table class="stack-table">
+        <thead><tr><th>Sensitivity</th><th class="num">Value</th><th>Reading</th></tr></thead>
+        <tbody>
+          <tr><td data-l="Sensitivity">s(KE; v)</td><td class="num" data-l="Value">+2.00</td><td data-l="Reading">KE ∝ v² — speed is the most expensive ask</td></tr>
+          <tr><td data-l="Sensitivity">s(KE; m)</td><td class="num" data-l="Value">+1.00</td><td data-l="Reading">KE ∝ m — mass costs linearly</td></tr>
+          <tr><td data-l="Sensitivity">s(m<sub>air</sub>; p<sub>cyl</sub>)</td><td class="num" data-l="Value">+1.00</td><td data-l="Reading">m<sub>air</sub> ∝ ρ ∝ p at fixed T (ideal gas)</td></tr>
+          <tr><td data-l="Sensitivity">s(P<sub>peak,mech</sub>; t)</td><td class="num" data-l="Value">−0.95</td><td data-l="Reading">1% longer launch ≈ 1% less peak power; total energy unchanged</td></tr>
+          <tr><td data-l="Sensitivity">s(V<sub>tank</sub>; p₁)</td><td class="num" data-l="Value">−1.67</td><td data-l="Reading">V ∝ 1/(p₁ − p₂): storage pressure is the strong tank lever</td></tr>
+          <tr class="hl"><td data-l="Sensitivity">s(ΔP; D)</td><td class="num" data-l="Value">−4.14</td><td data-l="Reading"><strong>Headline:</strong> 1% larger pipe cuts line loss ≈ 4.1% (between the D⁻⁴ minor and D⁻⁵ friction laws)</td></tr>
+          <tr><td data-l="Sensitivity">s(ΔP; ṁ)</td><td class="num" data-l="Value">≈ +2</td><td data-l="Reading">Losses ∝ ṁ² — more speed punishes a small line twice over</td></tr>
+          <tr><td data-l="Sensitivity">s(P<sub>comp</sub>; t<sub>recharge</sub>)</td><td class="num" data-l="Value">−1.00</td><td data-l="Reading">Exact inverse: double the recharge time, halve the compressor</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Check in the demo: raise D by 10% (0.25 → 0.275 m) and ΔP should fall by about a third (1.1<sup>−4.14</sup> ≈ 0.67) — the table and the sliders are the same model.</p>
+    <h4>What the shortcuts would have cost</h4>
+    <ul>
+      <li><strong>Receiver sized on p₁ alone:</strong> 1.78 m³ instead of 2.97 m³ on the usable drop — undersized by 40%, a tank that runs out of usable pressure mid-launch.</li>
+      <li><strong>Friction-only line loss:</strong> 14 kPa instead of 120 kPa with minor losses included.</li>
+      <li><strong>Isothermal compression:</strong> 18.1 MJ instead of the 27.5 MJ polytropic design value.</li>
+      <li><strong>Sizing at average flow:</strong> at ṁ<sub>avg</sub> = 22.2 kg/s instead of the 44.3 kg/s peak, line losses would be understated roughly 4×, since losses scale with ṁ². At the sizing point the receiver sits at p<sub>2</sub> = 1.2 MPa abs against the cylinder's 1.07 MPa abs need — ≈ 0.13 MPa of margin.</li>
+    </ul>
+  </div>
+
 </section>
 
 <!-- ============ 4. VALIDATION ============ -->
 <section id="validation">
   <p class="kicker">Section 4 · Validation</p>
-  <h2>Does the design sit plausibly against the real S&amp;S rides?</h2>
-  <p>S&amp;S does not publish the internal sizing of its launches, so the honest check is at the level of what <em>is</em> published: launch performance. This design case deliberately keeps the same train and target speed used throughout the project and asks whether the resulting machine is in the real rides' family:</p>
-  <div class="plain"><span class="plabel">In plain English</span><p><strong>Did we just make all this up? Let's check against the real coasters.</strong> Maxx Force reaches the <em>same</em> 78 mph as our design — but in 1.8 seconds instead of 2.8, so its riders are pressed back at about 2 g. Dodonpa is fiercer still: 107 mph in 1.8 seconds, about 2.7 g. Our design, at 1.27 g, is gentler than both — same top speed as Maxx Force, reached more calmly. Nothing in our numbers asks air to do anything the real machines don't already do harder: the cylinder pressure (0.97 MPa gauge) is ordinary industrial compressed-air territory, and the storage pressure (3.0 MPa) is a standard pressure-vessel class. If anything, the check says our machine could be pushed further before it left the realm of the plausible.</p></div>
+  <h2>Does the design sit plausibly against Maxx Force, the real S&amp;S ride?</h2>
+  <p>S&amp;S does not publish the internal sizing of its launches, so the honest check is at the level of what <em>is</em> published: launch performance. This design case deliberately keeps the same train and target speed used throughout the project and asks whether the resulting machine is in the real ride's family:</p>
+  <div class="plain"><span class="plabel">In plain English</span><p><strong>Did we just make all this up? Let's check against the real coaster.</strong> Maxx Force reaches the <em>same</em> 78 mph as our design — but in 1.8 seconds instead of 2.8, so its riders are pressed back at about 2 g. Our design, at 1.27 g, is gentler — same top speed, reached more calmly. Nothing in our numbers asks air to do anything the real machine doesn't already do harder: the cylinder pressure (0.97 MPa gauge) is ordinary industrial compressed-air territory, and the storage pressure (3.0 MPa) is a standard pressure-vessel class. If anything, the check says our machine could be pushed further before it left the realm of the plausible.</p></div>
   <div class="tablewrap">
     <table class="stack-table">
-      <thead><tr><th>Quantity</th><th class="num">This design</th><th class="num">Maxx Force (2019)</th><th class="num">Dodonpa</th><th>Comment</th></tr></thead>
+      <thead><tr><th>Quantity</th><th class="num">This design</th><th class="num">Maxx Force (2019)</th><th>Comment</th></tr></thead>
       <tbody>
-        <tr><td data-l="Quantity">Top speed</td><td class="num" data-l="This design">35 m/s (78 mph)</td><td class="num" data-l="Maxx Force">35 m/s (78 mph)</td><td class="num" data-l="Dodonpa">47.8 m/s (107 mph)</td><td data-l="Comment">Identical target to Maxx Force's published launch speed</td></tr>
-        <tr><td data-l="Quantity">Launch time</td><td class="num" data-l="This design">2.8 s</td><td class="num" data-l="Maxx Force">1.8 s</td><td class="num" data-l="Dodonpa">1.8 s</td><td data-l="Comment">This design takes ~55% longer — deliberately gentler</td></tr>
-        <tr><td data-l="Quantity">Mean acceleration</td><td class="num" data-l="This design">12.5 m/s² (1.27 g)</td><td class="num" data-l="Maxx Force">19.4 m/s² (1.98 g)</td><td class="num" data-l="Dodonpa">26.6 m/s² (2.71 g)</td><td data-l="Comment">Both real rides accelerate substantially harder, so a 1.27 g design is plausible for the same technology</td></tr>
-        <tr><td data-l="Quantity">What the same method would need at their pace</td><td class="num" data-l="This design">98.8 kN design thrust</td><td class="num" data-l="Maxx Force">≈ 151 kN (≈ 1.48 MPa gauge on the same piston)</td><td class="num" data-l="Dodonpa">≈ 204 kN (≈ 2.0 MPa gauge)</td><td data-l="Comment">Running Steps 1–2 at 1.8 s launch times raises thrust and cylinder pressure, but both stay inside ordinary compressed-air practice and below the 3.0 MPa storage pressure — the method scales into the real rides' regime without breaking</td></tr>
+        <tr><td data-l="Quantity">Top speed</td><td class="num" data-l="This design">35 m/s (78 mph)</td><td class="num" data-l="Maxx Force">35 m/s (78 mph)</td><td data-l="Comment">Identical target to Maxx Force's published launch speed</td></tr>
+        <tr><td data-l="Quantity">Launch time</td><td class="num" data-l="This design">2.8 s</td><td class="num" data-l="Maxx Force">1.8 s</td><td data-l="Comment">This design takes ~55% longer — deliberately gentler</td></tr>
+        <tr><td data-l="Quantity">Mean acceleration</td><td class="num" data-l="This design">12.5 m/s² (1.27 g)</td><td class="num" data-l="Maxx Force">19.4 m/s² (1.98 g)</td><td data-l="Comment">The real ride accelerates substantially harder, so a 1.27 g design is plausible for the same technology</td></tr>
+        <tr><td data-l="Quantity">What the same method would need at Maxx Force's pace</td><td class="num" data-l="This design">98.8 kN design thrust</td><td class="num" data-l="Maxx Force">≈ 151 kN (≈ 1.48 MPa gauge on the same piston)</td><td data-l="Comment">Running Steps 1–2 at a 1.8 s launch time raises thrust and cylinder pressure, but both stay inside ordinary compressed-air practice and below the 3.0 MPa storage pressure — the method scales into the real ride's regime without breaking</td></tr>
       </tbody>
     </table>
   </div>
@@ -679,7 +662,7 @@ T<sub>after expansion</sub> = 300 K × (1.07 / 3.0)<sup>(n−1)/n</sup> = 237 K 
       <h3>The prompts that drove it (abridged, in order)</h3>
       <ul>
         <li><em>"Project ideas for ChemE fluid mechanics (Transport 1) that can revolve around roller coasters"</em> → seven candidate ideas; Ethan selected the pneumatic (compressed-air) launch.</li>
-        <li><em>"Flesh out the pneumatic launch idea"</em> → reference cases (Maxx Force, Dodonpa), a self-consistent design case, and the six calculation steps.</li>
+        <li><em>"Flesh out the pneumatic launch idea"</em> → a reference case (Maxx Force), a self-consistent design case, and the six calculation steps.</li>
         <li><em>The full submission requirements, pasted verbatim</em> → restructured the deliverable from a document into this website + video + transcript format.</li>
         <li><em>"I'm solo, build it for individual submission"</em> → attribution, points basis (individual, max 50), and contribution sections written for one author.</li>
       </ul>
@@ -691,7 +674,7 @@ T<sub>after expansion</sub> = 300 K × (1.07 / 3.0)<sup>(n−1)/n</sup> = 237 K 
       <thead><tr><th>Step</th><th>What changed</th><th>Why (my guidance)</th></tr></thead>
       <tbody>
         <tr><td data-l="Step">1 · Topic</td><td data-l="What changed">Chose the pneumatic launch over splashdown braking, magnetic launch analysis, and water-coaster pumping</td><td data-l="Why">It uses the widest slice of Transport 1 — momentum balance, ideal-gas law, continuity, Reynolds/Moody, Darcy–Weisbach, compressor work — in one system, and air's compressibility adds the Mach-number question the other topics lack</td></tr>
-        <tr><td data-l="Step">2 · Design case</td><td data-l="What changed">Rejected "just analyze Maxx Force" in favor of an original design case (7,500 kg, 35 m/s, 2.8 s), with Maxx Force and Dodonpa demoted to validation</td><td data-l="Why">S&amp;S doesn't publish piston diameters, tank volumes, or line sizes; sizing my own case is honest engineering instead of reverse-engineering invented inputs</td></tr>
+        <tr><td data-l="Step">2 · Design case</td><td data-l="What changed">Rejected "just analyze Maxx Force" in favor of an original design case (7,500 kg, 35 m/s, 2.8 s), with Maxx Force demoted to validation</td><td data-l="Why">S&amp;S doesn't publish piston diameters, tank volumes, or line sizes; sizing my own case is honest engineering instead of reverse-engineering invented inputs</td></tr>
         <tr><td data-l="Step">3 · Format</td><td data-l="What changed">Written document → interactive website after the submission requirements arrived</td><td data-l="Why">The rubric requires a public demo; live sliders demonstrate the tradeoffs better than static tables</td></tr>
         <tr><td data-l="Step">4 · Critique setup</td><td data-l="What changed">Wrote the critique prompt (project link + requirements verbatim + specific technical questions) and the decision-log worksheet in Section 6</td><td data-l="Why">Required by the rubric. The plan's own weakest points — the receiver shortcut, minor losses, expansion cooling, the ideal-gas assumption — are named in advance so the second model's review can be judged against them, and so my accept/reject decisions are recorded, not improvised</td></tr>
         <tr><td data-l="Step">5 · Submission basis</td><td data-l="What changed">Confirmed solo / individual submission (max 50 points)</td><td data-l="Why">Determines the attribution section and that all contributions are mine</td></tr>
@@ -714,7 +697,7 @@ T<sub>after expansion</sub> = 300 K × (1.07 / 3.0)<sup>(n−1)/n</sup> = 237 K 
 
 Project website: [paste the public link to this website here]
 
-The project sizes a pneumatic (compressed-air) roller-coaster launch — compressor, receiver tank, supply line, launch piston, catch car — for a 7,500 kg train launched 0 to 35 m/s in 2.8 s, using the S&amp;S compressed-air coasters Maxx Force and Dodonpa as the reference and validation cases.
+The project sizes a pneumatic (compressed-air) roller-coaster launch — compressor, receiver tank, supply line, launch piston, catch car — for a 7,500 kg train launched 0 to 35 m/s in 2.8 s, using the S&amp;S compressed-air coaster Maxx Force as the reference and validation case.
 
 Submission requirements the project must satisfy:
 1. Publicly accessible website demo/documentation.
@@ -738,7 +721,7 @@ Critique specifically: (a) Are the fluid-mechanics calculations correct and comp
       <tbody>
         <tr><td data-l="Critique point">Size the receiver by the usable pressure drop (p₁ − p₂), not by p₁ alone</td><td data-l="Decision"><span class="tag acc">Preliminary: keep mass balance</span></td><td data-l="Justification">Model A's first sketch divided by p₁, which gives 1.78 m³ — a tank that would run out of usable pressure mid-launch. The plan already replaces it with the mass balance over (p₁ − p₂) = 1.8 MPa in Step 4 and the demo (2.97 m³). Model B is asked to verify the end-pressure choice (1.2 MPa abs vs. the 1.07 MPa abs cylinder need) and the arithmetic.</td></tr>
         <tr><td data-l="Critique point">Add minor losses (valves, bends, manifold) — friction alone understates line loss</td><td data-l="Decision"><span class="tag acc">Preliminary: keep ΣK method</span></td><td data-l="Justification">Already implemented (ΣK = 6) in the demo, the diameter table, and the chart — in this short, fat line the minor losses are ~7.5× the friction loss, so the point changes the design conclusion materially. Model B is asked to sanity-check ΣK = 6 against typical launch-valve, bend, and manifold coefficients.</td></tr>
-        <tr><td data-l="Critique point">Size the line at peak mass flow (end of launch), not average mass flow</td><td data-l="Decision"><span class="tag acc">Preliminary: keep</span></td><td data-l="Justification">Physically motivated: the piston's demand peaks at top speed, and losses scale with ṁ², so sizing at the 22.2 kg/s average would understate the loss roughly fourfold. Reflected in Step 5 and Theory 7. Model B is asked to check the timing assumption — whether peak flow really coincides with the tightest pressure margin.</td></tr>
+        <tr><td data-l="Critique point">Size the line at peak mass flow (end of launch), not average mass flow</td><td data-l="Decision"><span class="tag acc">Preliminary: keep</span></td><td data-l="Justification">Physically motivated: the piston's demand peaks at top speed, and losses scale with ṁ², so sizing at the 22.2 kg/s average would understate the loss roughly fourfold. Reflected in Step 5 and the sizing-point note in Section 3. Model B is asked to check the timing assumption — whether peak flow really coincides with the tightest pressure margin.</td></tr>
         <tr><td data-l="Critique point">Calculate expansion cooling (to ≈ 237 K) but do not feed it back into the density and flow steps</td><td data-l="Decision"><span class="tag acc">Preliminary: keep + discuss</span></td><td data-l="Justification">The cooling is computed and stated as a limitation in Steps 3–6 rather than hidden: cold air at the cylinder is denser, which would slightly reduce the volumetric demand, so the isothermal-density model is conservative on air mass. Model B is asked whether that discussion suffices or a temperature-corrected density pass should be added.</td></tr>
         <tr><td data-l="Critique point">Check the ideal-gas assumption at 3.0 MPa — should a compressibility factor Z be applied?</td><td data-l="Decision"><span class="tag acc">Preliminary: keep ideal gas, verify</span></td><td data-l="Justification">Air at 3.0 MPa and 300 K is close to ideal, and every downstream number (density, tank volume, compression work) inherits the assumption, so it deserves an independent check rather than a shrug. Model B is asked to quantify the error; if it shows a correction larger than a few percent, I'll add it and say so in the final log.</td></tr>
         <tr><td data-l="Critique point">Replace the lumped 5 kN drag with a full v² aerodynamic + rolling model</td><td data-l="Decision"><span class="tag rej">Preliminary: reject (for now)</span></td><td data-l="Justification">Drag is ~5% of thrust at design conditions, and no defensible published C<sub>D</sub>·A exists for a coaster train — a fancier model would add false precision. Kept as a stated limitation and a 'learn more' item unless Model B can cite a usable drag source.</td></tr>
@@ -768,13 +751,48 @@ Critique specifically: (a) Are the fluid-mechanics calculations correct and comp
   <p class="small" style="margin-top:12px">Once run, Model B's verbatim critique will be pasted into the YouTube video's comments section alongside the practice transcript, as the submission requirements specify (requirement 2), and the final decisions will replace the preliminary views in the log above.</p>
 </section>
 
-<!-- ============ 7. VIDEO ============ -->
-<section id="video">
-  <p class="kicker">Section 7 · Presentation video &amp; transcript (requirements 2–3)</p>
-  <h2>Video and verbatim transcript</h2>
+<!-- ============ 7. PRESENTATION ============ -->
+<section id="presentation">
+  <style>
+    .videoframe{aspect-ratio:16/9;border:2px dashed var(--warn);border-radius:12px;background:var(--surface2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:18px;margin-top:12px}
+    .videoframe .vf-label{font-weight:800;font-size:19px}
+    .videoframe .vf-link{font-family:"IBM Plex Mono",monospace;font-size:13.5px;color:var(--ink2);border:1px dashed var(--line);border-radius:8px;padding:7px 12px;background:var(--surface);max-width:100%;overflow-wrap:anywhere}
+    .slidelist{margin:10px 0 0;padding-left:22px}
+    .slidelist li{margin-bottom:6px}
+  </style>
+  <p class="kicker">Section 7 · Presentation — video &amp; slides (requirements 2–3)</p>
+  <h2>Presentation: watch it, or download the slides</h2>
   <div class="todo">
-    <p style="margin:0"><b>One step left for Ethan:</b> record the presentation (script outline below), upload it to YouTube, then (1) add the video link here, (2) paste the practice transcript and the Model B critique into the video's comments, and (3) replace the transcript placeholder below with YouTube's verbatim auto-generated transcript. Everything else on this page is final.</p>
+    <p style="margin:0"><b>One step left for Ethan:</b> record the presentation (script outline below), upload it to YouTube, then (1) paste the video link into the frame below, (2) paste the practice transcript and the Model B critique into the video's comments, and (3) replace the transcript placeholder below with YouTube's verbatim auto-generated transcript. The slides download works as soon as <span class="mono">slides.pptx</span> sits next to this page. Everything else on this page is final.</p>
   </div>
+
+  <div class="grid2" style="margin-top:18px">
+    <div class="card">
+      <h3>YouTube presentation video</h3>
+      <div class="videoframe" role="img" aria-label="Empty 16:9 placeholder frame where the YouTube presentation video will go">
+        <span class="vf-label">YouTube presentation video goes here</span>
+        <span class="small">Ethan will paste the YouTube link here once the video is uploaded — the embedded video will play in this 16:9 frame.</span>
+        <span class="vf-link">Video link: [paste YouTube link here]</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>PowerPoint slides</h3>
+      <p>The slide deck for the in-class presentation, as a PowerPoint file:</p>
+      <p><a class="btn" href="slides.pptx" download>Download presentation slides (.pptx)</a></p>
+      <p class="small">The deck covers:</p>
+      <ol class="slidelist">
+        <li>Sizing a Pneumatic Launch — the question</li>
+        <li>Store Slowly, Spend Fast — how the system works</li>
+        <li>The Design Case — train, target speed, launch time</li>
+        <li>Six Steps of Math — momentum to compressor</li>
+        <li>The Numbers — receiver, supply line, recharge</li>
+        <li>Validation — our design vs. Maxx Force</li>
+        <li>Built with AI — process, critique, decisions</li>
+        <li>What I Learned — and what's next</li>
+      </ol>
+    </div>
+  </div>
+
   <div class="grid2" style="margin-top:18px">
     <div class="card">
       <h3>Presentation script outline (~8 minutes)</h3>
@@ -783,7 +801,7 @@ Critique specifically: (a) Are the fluid-mechanics calculations correct and comp
         <li><strong>0:45 The system</strong> — walk the 7-step flow diagram (Section 2).</li>
         <li><strong>1:45 Live demo</strong> — run the sliders; show the 0.15 m line mistake and the compressor-vs-peak power gap.</li>
         <li><strong>4:00 Calculations</strong> — the six steps, assumptions stated out loud, including the −36 °C expansion cooling.</li>
-        <li><strong>5:30 Validation</strong> — Maxx Force / Dodonpa comparison: same speed, gentler acceleration, plausible pressures.</li>
+        <li><strong>5:30 Validation</strong> — Maxx Force comparison: same speed, gentler acceleration, plausible pressures.</li>
         <li><strong>6:15 AI process</strong> — two models, the critique, and the decisions I accepted/rejected and why.</li>
         <li><strong>7:15 Close</strong> — what I learned, what I'd do next (Section 8).</li>
       </ul>
@@ -860,7 +878,7 @@ Critique specifically: (a) Are the fluid-mechanics calculations correct and comp
   <ul class="plain" style="list-style:none;padding:0">
     <li style="margin-bottom:8px">· Munson, Young &amp; Okiishi, <em>Fundamentals of Fluid Mechanics</em> — Darcy–Weisbach equation, Moody chart, minor-loss coefficients, pump/compressor power relations (course text).</li>
     <li style="margin-bottom:8px">· Course example format: the instructor's packed-bed runaway demo site, <a href="https://chetools.github.io/claude/packed-bed-runaway/">chetools.github.io/claude/packed-bed-runaway</a> — the model for a publicly hosted, interactive project page.</li>
-    <li style="margin-bottom:8px">· Maxx Force (Six Flags Great America, opened 2019) launch performance, 0–78 mph in 1.8 s, and Dodonpa (Fuji-Q Highland, S&amp;S Thrust Air 2000), 0–107 mph in 1.8 s, as publicly reported for S&amp;S compressed-air coasters — used as order-of-magnitude validation only, as discussed in Section 4. S&amp;S does not publish internal sizing (piston, receiver, line dimensions).</li>
+    <li style="margin-bottom:8px">· Maxx Force (Six Flags Great America, opened 2019) launch performance, 0–78 mph in 1.8 s, as publicly reported for the S&amp;S compressed-air coaster — used as order-of-magnitude validation only, as discussed in Section 4. S&amp;S does not publish internal sizing (piston, receiver, line dimensions).</li>
     <li style="margin-bottom:8px">· Standard property data for air: R = 287 J/kg·K, γ = 1.4, μ ≈ 1.85 × 10⁻⁵ Pa·s at 300 K; commercial steel roughness ε ≈ 0.045 mm; Haaland correlation for the friction factor; ideal-gas and polytropic-process relations from the course text.</li>
   </ul>
 </section>
